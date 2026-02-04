@@ -1,6 +1,6 @@
 # Story 1.1: Initialize Vite Project
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -18,25 +18,25 @@ so that I have a working development environment to build upon.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Scaffold project (AC: #1)
-  - [ ] Run `npm create vite@latest my-bmad-project -- --template react-ts`
-  - [ ] Note: Since we are already in the project directory, initialize Vite in a temp location and move files, OR initialize directly if directory is empty
-- [ ] Task 2: Install dependencies (AC: #2)
-  - [ ] Run `npm install`
-  - [ ] Verify no errors or critical vulnerabilities
-- [ ] Task 3: Verify dev server (AC: #3, #4)
-  - [ ] Run `npm run dev`
-  - [ ] Confirm app renders at localhost:5173
-- [ ] Task 4: Clean up starter boilerplate (AC: #5)
-  - [ ] Remove default Vite demo content from `App.tsx` (replace with minimal placeholder)
-  - [ ] Remove `App.css` and `index.css` (styling will be handled by MUI in Story 1.2)
-  - [ ] Remove any Vite/React logos from `src/assets/` if present
-  - [ ] Keep `src/vite-env.d.ts` (TypeScript declarations)
-  - [ ] Verify `npm run build` completes without errors
-- [ ] Task 5: Initialize Git repository
-  - [ ] Run `git init`
-  - [ ] Verify `.gitignore` includes `node_modules/`, `dist/`, `.env`
-  - [ ] Create initial commit
+- [x] Task 1: Scaffold project (AC: #1)
+  - [x] Run `npm create vite@latest my-bmad-project -- --template react-ts`
+  - [x] Note: Since we are already in the project directory, initialize Vite in a temp location and move files, OR initialize directly if directory is empty
+- [x] Task 2: Install dependencies (AC: #2)
+  - [x] Run `npm install`
+  - [x] Verify no errors or critical vulnerabilities
+- [x] Task 3: Verify dev server (AC: #3, #4)
+  - [x] Run `npm run dev`
+  - [x] Confirm app renders at localhost:5173
+- [x] Task 4: Clean up starter boilerplate (AC: #5)
+  - [x] Remove default Vite demo content from `App.tsx` (replace with minimal placeholder)
+  - [x] Remove `App.css` and `index.css` (styling will be handled by MUI in Story 1.2)
+  - [x] Remove any Vite/React logos from `src/assets/` if present
+  - [x] Keep `src/vite-env.d.ts` (TypeScript declarations)
+  - [x] Verify `npm run build` completes without errors
+- [x] Task 5: Initialize Git repository
+  - [x] Run `git init`
+  - [x] Verify `.gitignore` includes `node_modules/`, `dist/`, `.env`
+  - [x] Create initial commit
 
 ## Dev Notes
 
@@ -100,8 +100,36 @@ my-bmad-project/
 
 ### Agent Model Used
 
+Claude Opus 4.5 (claude-opus-4-5-20251101)
+
 ### Debug Log References
+
+- Scaffolded in temp directory and copied files to preserve existing _bmad directories
+- Node.js v24.13.0, Vite 7.3.1 (via create-vite 8.2.0)
+- npm install: 176 packages, 0 vulnerabilities
+- npm run build: successful, 28 modules, built in 969ms
 
 ### Completion Notes List
 
+- Project scaffolded using Vite react-ts template (create-vite 8.2.0)
+- Cleaned up all default boilerplate: App.css, index.css, src/assets/, public/vite.svg
+- App.tsx replaced with minimal empty fragment placeholder
+- Removed index.css import from main.tsx
+- Added .env to .gitignore for future form service config
+- Git repo initialized with initial commit
+- Build verified: TypeScript compilation + Vite production build pass cleanly
+
 ### File List
+
+- index.html (new)
+- package.json (new)
+- tsconfig.json (new)
+- tsconfig.app.json (new)
+- tsconfig.node.json (new)
+- vite.config.ts (new)
+- eslint.config.js (new)
+- .gitignore (new, modified to add .env)
+- src/main.tsx (new, modified to remove index.css import)
+- src/App.tsx (new, replaced with minimal placeholder)
+- src/vite-env.d.ts (new)
+- public/ (new, empty directory)
