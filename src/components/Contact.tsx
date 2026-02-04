@@ -20,7 +20,7 @@ interface FormErrors {
 }
 
 const FORM_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT as string | undefined;
-const FALLBACK_EMAIL = 'ana@example.com';
+const FALLBACK_EMAIL = 'trifangeorge@yahoo.com';
 
 function validateForm(data: ContactFormData): FormErrors {
   const errors: FormErrors = {};
