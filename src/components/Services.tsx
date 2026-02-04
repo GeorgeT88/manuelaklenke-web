@@ -41,7 +41,7 @@ function Services() {
         display: 'flex',
         alignItems: 'center',
         py: { xs: 6, md: 10 },
-        backgroundColor: 'background.default',
+        backgroundColor: 'background.paper',
       }}
     >
       <Container maxWidth="lg">
