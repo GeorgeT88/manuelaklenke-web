@@ -10,11 +10,11 @@
   "validation": {
     "nameRequired": "Numele este obligatoriu",
     "emailRequired": "Emailul este obligatoriu",
-    "emailInvalid": "Va rugam introduceti o adresa de email valida",
+    "emailInvalid": "Vă rugăm introduceți o adresă de email validă",
     "messageRequired": "Mesajul este obligatoriu"
   },
   "status": {
-    "success": "Va multumim pentru mesaj! Va voi raspunde in curand.",
-    "error": "Ceva nu a functionat corect. Va rugam incercati din nou sau contactati-ma direct la"
+    "success": "Vă mulțumim pentru mesaj! Vă voi răspunde în curând.",
+    "error": "Ceva nu a funcționat corect. Vă rugăm încercați din nou sau contactați-mă direct la"
   }
 }
