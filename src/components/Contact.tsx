@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -22,23 +23,8 @@ interface FormErrors {
 const FORM_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT as string | undefined;
 const FALLBACK_EMAIL = 'trifangeorge@yahoo.com';
 
-function validateForm(data: ContactFormData): FormErrors {
-  const errors: FormErrors = {};
-  if (!data.name.trim()) {
-    errors.name = 'Name is required';
-  }
-  if (!data.email.trim()) {
-    errors.email = 'Email is required';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = 'Please enter a valid email address';
-  }
-  if (!data.message.trim()) {
-    errors.message = 'Message is required';
-  }
-  return errors;
-}
-
 function Contact() {
+  const { t } = useTranslation('contact');
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -47,6 +33,22 @@ function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+
+  const validateForm = (data: ContactFormData): FormErrors => {
+    const validationErrors: FormErrors = {};
+    if (!data.name.trim()) {
+      validationErrors.name = t('validation.nameRequired');
+    }
+    if (!data.email.trim()) {
+      validationErrors.email = t('validation.emailRequired');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      validationErrors.email = t('validation.emailInvalid');
+    }
+    if (!data.message.trim()) {
+      validationErrors.message = t('validation.messageRequired');
+    }
+    return validationErrors;
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -111,26 +113,26 @@ function Contact() {
             fontSize: { xs: '1.75rem', md: '2.25rem' },
           }}
         >
-          Contact
+          {t('heading')}
         </Typography>
 
         {submitStatus === 'success' && (
           <Alert severity="success" sx={{ mb: 3 }}>
-            Thank you for your message! I will get back to you soon.
+            {t('status.success')}
           </Alert>
         )}
 
         {submitStatus === 'error' && (
           <Alert severity="error" sx={{ mb: 3 }}>
-            Something went wrong. Please try again or contact me directly at{' '}
+            {t('status.error')}{' '}
             <a href={`mailto:${FALLBACK_EMAIL}`}>{FALLBACK_EMAIL}</a>.
           </Alert>
         )}
 
-        <Box component="form" onSubmit={handleSubmit} noValidate aria-label="Contact form">
+        <Box component="form" onSubmit={handleSubmit} noValidate aria-label={t('form.ariaLabel')}>
           <TextField
             fullWidth
-            label="Name"
+            label={t('form.name')}
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -141,7 +143,7 @@ function Contact() {
           />
           <TextField
             fullWidth
-            label="Email"
+            label={t('form.email')}
             name="email"
             type="email"
             value={formData.email}
@@ -153,7 +155,7 @@ function Contact() {
           />
           <TextField
             fullWidth
-            label="Message"
+            label={t('form.message')}
             name="message"
             value={formData.message}
             onChange={handleChange}
@@ -177,7 +179,7 @@ function Contact() {
               textTransform: 'none',
             }}
           >
-            {isSubmitting ? <CircularProgress size={24} color="inherit" /> : 'Send Message'}
+            {isSubmitting ? <CircularProgress size={24} color="inherit" /> : t('form.submit')}
           </Button>
         </Box>
       </Container>

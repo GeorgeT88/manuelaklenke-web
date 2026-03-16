@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import profilePhoto1 from '../photo/profilePhoto1.png';
 
 function About() {
+  const { t } = useTranslation('about');
+
   return (
     <Box
       component="section"
@@ -36,7 +39,7 @@ function About() {
             <Box
               component="img"
               src={profilePhoto1}
-              alt="Ana Test reading a book in her study"
+              alt={t('imageAlt')}
               sx={{
                 width: { xs: '70%', sm: 320, md: 380, lg: 420 },
                 maxHeight: { xs: 400, md: '70vh' },
@@ -63,36 +66,19 @@ function About() {
                 textAlign: { xs: 'center', md: 'left' },
               }}
             >
-              About Me
+              {t('heading')}
             </Typography>
             <Typography variant="body1" sx={{ mb: 2.5, color: 'text.secondary' }}>
-              With over 20 years of professional translation experience, I have
-              dedicated my career to bridging language barriers between German,
-              Romanian, and English. My journey began in Bucharest, where my
-              passion for languages led me to pursue formal training in
-              translation and linguistics.
+              {t('paragraph1')}
             </Typography>
             <Typography variant="body1" sx={{ mb: 2.5, color: 'text.secondary' }}>
-              Over the past two decades, I have worked with clients across
-              diverse industries — from legal firms requiring precise contract
-              translations to medical institutions needing accurate clinical
-              documentation. My expertise spans legal, medical, technical, and
-              literary translation, ensuring that every project receives the
-              specialized attention it deserves.
+              {t('paragraph2')}
             </Typography>
             <Typography variant="body1" sx={{ mb: 2.5, color: 'text.secondary' }}>
-              I believe that great translation goes beyond words — it captures
-              tone, intent, and cultural nuance. Whether you need a certified
-              legal document, a technical manual, or a literary work brought to
-              life in another language, I bring the same level of care and
-              precision to every project.
+              {t('paragraph3')}
             </Typography>
             <Typography variant="body1" sx={{ mb: 2.5, color: 'text.secondary' }}>
-              My approach is rooted in deep cultural understanding and
-              meticulous attention to detail. Every document I translate
-              undergoes thorough quality assurance — from initial analysis and
-              terminology research to final proofreading — ensuring consistency,
-              accuracy, and natural fluency in the target language.
+              {t('paragraph4')}
             </Typography>
           </Box>
         </Box>

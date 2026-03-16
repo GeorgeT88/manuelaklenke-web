@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "about": "Uber mich",
+    "services": "Leistungen",
+    "testimonials": "Referenzen",
+    "contact": "Kontakt"
+  },
+  "logo": {
+    "name": "ANA",
+    "surname": "TEST"
+  },
+  "aria": {
+    "openMenu": "Navigationsmenu offnen",
+    "skipToContent": "Zum Inhalt springen"
+  },
+  "meta": {
+    "title": "Ana Test - Professionelle Ubersetzungsdienstleistungen",
+    "description": "Professionelle Ubersetzungsdienstleistungen in Deutsch, Rumanisch und Englisch. Uber 20 Jahre Erfahrung in juristischen, medizinischen, technischen und literarischen Ubersetzungen."
+  }
+}

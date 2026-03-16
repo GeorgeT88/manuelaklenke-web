@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
@@ -12,17 +13,19 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from './Logo';
+import LanguageSelector from './LanguageSelector';
 
 const NAV_ITEMS = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Contact', href: '#contact' },
+  { labelKey: 'nav.about', href: '#about' },
+  { labelKey: 'nav.services', href: '#services' },
+  { labelKey: 'nav.testimonials', href: '#testimonials' },
+  { labelKey: 'nav.contact', href: '#contact' },
 ];
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.href.slice(1));
 
 function Navbar() {
+  const { t } = useTranslation('common');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
 
@@ -69,6 +72,7 @@ function Navbar() {
               listStyle: 'none',
               m: 0,
               p: 0,
+              alignItems: 'center',
             }}
           >
             {NAV_ITEMS.map((item) => {
@@ -92,21 +96,27 @@ function Navbar() {
                       },
                     }}
                   >
-                    {item.label}
+                    {t(item.labelKey)}
                   </Button>
                 </li>
               );
             })}
+            <li>
+              <LanguageSelector />
+            </li>
           </Box>
 
           {/* Mobile hamburger */}
-          <IconButton
-            aria-label="Open navigation menu"
-            onClick={() => setDrawerOpen(true)}
-            sx={{ display: { xs: 'flex', sm: 'none' }, color: 'text.primary' }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Box sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center', gap: 1 }}>
+            <LanguageSelector />
+            <IconButton
+              aria-label={t('aria.openMenu')}
+              onClick={() => setDrawerOpen(true)}
+              sx={{ color: 'text.primary' }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
 
           <Drawer
             anchor="right"
@@ -131,7 +141,7 @@ function Navbar() {
                           fontWeight: isActive ? 700 : 400,
                         }}
                       >
-                        <ListItemText primary={item.label} />
+                        <ListItemText primary={t(item.labelKey)} />
                       </ListItemButton>
                     </ListItem>
                   );

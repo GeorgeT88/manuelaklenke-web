@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,8 +10,12 @@ import About from './components/About';
 import Services from './components/Services';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
+import useDocumentMeta from './hooks/useDocumentMeta';
 
 function App() {
+  const { t } = useTranslation('common');
+  useDocumentMeta();
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -34,7 +39,7 @@ function App() {
           },
         }}
       >
-        Skip to content
+        {t('aria.skipToContent')}
       </Box>
       <Navbar />
       <Toolbar />

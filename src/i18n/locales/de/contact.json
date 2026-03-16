@@ -1,0 +1,20 @@
+{
+  "heading": "Kontakt",
+  "form": {
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "submit": "Nachricht senden",
+    "ariaLabel": "Kontaktformular"
+  },
+  "validation": {
+    "nameRequired": "Name ist erforderlich",
+    "emailRequired": "E-Mail ist erforderlich",
+    "emailInvalid": "Bitte geben Sie eine gultige E-Mail-Adresse ein",
+    "messageRequired": "Nachricht ist erforderlich"
+  },
+  "status": {
+    "success": "Vielen Dank fur Ihre Nachricht! Ich werde mich bald bei Ihnen melden.",
+    "error": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie mich direkt unter"
+  }
+}

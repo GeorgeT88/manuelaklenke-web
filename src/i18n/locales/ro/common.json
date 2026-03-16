@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "about": "Despre mine",
+    "services": "Servicii",
+    "testimonials": "Testimoniale",
+    "contact": "Contact"
+  },
+  "logo": {
+    "name": "ANA",
+    "surname": "TEST"
+  },
+  "aria": {
+    "openMenu": "Deschide meniul de navigare",
+    "skipToContent": "Sari la continut"
+  },
+  "meta": {
+    "title": "Ana Test - Servicii Profesionale de Traducere",
+    "description": "Servicii profesionale de traducere in germana, romana si engleza. Peste 20 de ani de experienta in traduceri juridice, medicale, tehnice si literare."
+  }
+}

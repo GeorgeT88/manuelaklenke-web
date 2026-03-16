@@ -1,0 +1,21 @@
+{
+  "heading": "Leistungen",
+  "items": [
+    {
+      "title": "Juristische Ubersetzung",
+      "description": "Beglaubigte Ubersetzungen von Vertragen, Gerichtsdokumenten, juristischer Korrespondenz und regulatorischen Unterlagen mit praziser Rechtsterminologie."
+    },
+    {
+      "title": "Medizinische Ubersetzung",
+      "description": "Genaue Ubersetzung von klinischen Berichten, Patientendokumentation, pharmazeutischen Texten und medizinischen Forschungsarbeiten."
+    },
+    {
+      "title": "Technische Ubersetzung",
+      "description": "Klare und prazise Ubersetzungen von technischen Handbuchern, Ingenieurspezifikationen, Software-Dokumentation und Patenten."
+    },
+    {
+      "title": "Literarische Ubersetzung",
+      "description": "Sorgfaltige Ubersetzungen von Romanen, Gedichten, Essays und kreativen Werken, die die Stimme und den Stil des Autors bewahren."
+    }
+  ]
+}

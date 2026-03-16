@@ -1,37 +1,19 @@
+import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import ServiceCard from './ServiceCard';
 
-const SERVICES_DATA = [
-  {
-    title: 'Legal Translation',
-    description:
-      'Certified translations of contracts, court documents, legal correspondence, and regulatory filings with precise legal terminology.',
-    icon: '⚖️',
-  },
-  {
-    title: 'Medical Translation',
-    description:
-      'Accurate translation of clinical reports, patient documentation, pharmaceutical texts, and medical research papers.',
-    icon: '🏥',
-  },
-  {
-    title: 'Technical Translation',
-    description:
-      'Clear and precise translations of technical manuals, engineering specifications, software documentation, and patents.',
-    icon: '⚙️',
-  },
-  {
-    title: 'Literary Translation',
-    description:
-      'Thoughtful translations of novels, poetry, essays, and creative works that preserve the author\'s voice and style.',
-    icon: '📚',
-  },
-];
+const SERVICE_ICONS = ['⚖️', '🏥', '⚙️', '📚'];
 
 function Services() {
+  const { t } = useTranslation('services');
+  const items = t('items', { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+  }>;
+
   return (
     <Box
       component="section"
@@ -55,15 +37,15 @@ function Services() {
             fontSize: { xs: '1.75rem', md: '2.25rem' },
           }}
         >
-          Services
+          {t('heading')}
         </Typography>
         <Grid container spacing={4}>
-          {SERVICES_DATA.map((service) => (
-            <Grid key={service.title} size={{ xs: 12, sm: 6, md: 3 }}>
+          {items.map((service, index) => (
+            <Grid key={index} size={{ xs: 12, sm: 6, md: 3 }}>
               <ServiceCard
                 title={service.title}
                 description={service.description}
-                icon={service.icon}
+                icon={SERVICE_ICONS[index]}
               />
             </Grid>
           ))}

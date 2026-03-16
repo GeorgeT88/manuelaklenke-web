@@ -1,0 +1,21 @@
+{
+  "heading": "Servicii",
+  "items": [
+    {
+      "title": "Traduceri Juridice",
+      "description": "Traduceri certificate de contracte, documente judiciare, corespondenta juridica si dosare de reglementare cu terminologie juridica precisa."
+    },
+    {
+      "title": "Traduceri Medicale",
+      "description": "Traduceri precise de rapoarte clinice, documentatie pentru pacienti, texte farmaceutice si lucrari de cercetare medicala."
+    },
+    {
+      "title": "Traduceri Tehnice",
+      "description": "Traduceri clare si precise de manuale tehnice, specificatii de inginerie, documentatie software si brevete."
+    },
+    {
+      "title": "Traduceri Literare",
+      "description": "Traduceri atente de romane, poezie, eseuri si lucrari creative care pastreaza vocea si stilul autorului."
+    }
+  ]
+}

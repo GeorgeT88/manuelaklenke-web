@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -5,6 +6,8 @@ import Container from '@mui/material/Container';
 import profilePhoto from '../photo/profilePhoto.png';
 
 function Hero() {
+  const { t } = useTranslation('hero');
+
   return (
     <Box
       component="section"
@@ -45,11 +48,11 @@ function Hero() {
                 lineHeight: 1.15,
               }}
             >
-              Professional{' '}
+              {t('title')}{' '}
               <br />
-              Translation{' '}
+              {t('titleLine2')}{' '}
               <Box component="span" sx={{ color: 'secondary.main' }}>
-                Services
+                {t('titleHighlight')}
               </Box>
             </Typography>
             <Typography
@@ -63,9 +66,7 @@ function Hero() {
                 lineHeight: 1.8,
               }}
             >
-              German | Romanian | English — With over 20 years of experience
-              in legal, medical, technical, and literary translation, I bring
-              precision and care to every project.
+              {t('tagline')}
             </Typography>
             <Button
               variant="contained"
@@ -81,7 +82,7 @@ function Hero() {
                 fontWeight: 600,
               }}
             >
-              Get in Touch
+              {t('cta')}
             </Button>
           </Box>
 
@@ -97,7 +98,7 @@ function Hero() {
             <Box
               component="img"
               src={profilePhoto}
-              alt="Ana Test, professional translator specializing in German, Romanian, and English"
+              alt={t('imageAlt')}
               sx={{
                 width: { xs: '70%', sm: 320, md: 380, lg: 420 },
                 maxHeight: { xs: 400, md: '70vh' },
