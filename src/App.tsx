@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
@@ -48,6 +49,7 @@ function App() {
         <Services />
         <Contact />
       </Box>
+      <Analytics />
     </ThemeProvider>
   );
 }
