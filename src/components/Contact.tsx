@@ -99,7 +99,7 @@ function Contact() {
         display: 'flex',
         alignItems: 'center',
         py: { xs: 6, md: 10 },
-        backgroundColor: '#ffffff',
+        backgroundColor: 'background.default',
       }}
     >
       <Container maxWidth="lg">
