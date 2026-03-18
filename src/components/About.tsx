@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import profilePhoto1 from '../photo/profilePhoto1.png';
 
-const TEXT_BG = '#5B6978';
+const TEXT_BG = '#5B4A3F';
 
 function About() {
   const { t } = useTranslation('about');
