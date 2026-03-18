@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
@@ -50,6 +51,7 @@ function App() {
         <Contact />
       </Box>
       <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   );
 }
