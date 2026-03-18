@@ -19,7 +19,7 @@ function Hero() {
         backgroundColor: '#ffffff',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ backgroundColor: 'primary.main' }}>
       {/* Centered photo container with overlay and name */}
       <Box
         sx={{
