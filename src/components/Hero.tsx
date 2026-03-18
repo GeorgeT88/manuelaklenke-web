@@ -16,7 +16,7 @@ function Hero() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#D4B8A0',
+        backgroundColor: '#ffffff',
       }}
     >
       <Container maxWidth="lg">
