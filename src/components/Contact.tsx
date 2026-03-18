@@ -99,17 +99,19 @@ function Contact() {
         display: 'flex',
         alignItems: 'center',
         py: { xs: 6, md: 10 },
-        backgroundColor: 'background.default',
+        backgroundColor: '#ffffff',
       }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="lg">
+        <Box sx={{ backgroundColor: 'primary.main', py: { xs: 6, md: 10 }, px: { xs: 3, md: 6 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{ width: '100%', maxWidth: 600 }}>
         <Typography
           variant="h2"
           component="h2"
           sx={{
             textAlign: 'center',
             mb: 6,
-            color: 'primary.main',
+            color: '#ffffff',
             fontSize: { xs: '1.75rem', md: '2.25rem' },
           }}
         >
@@ -139,7 +141,7 @@ function Contact() {
             error={!!errors.name}
             helperText={errors.name}
             required
-            sx={{ mb: 3 }}
+            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' } } }}
           />
           <TextField
             fullWidth
@@ -151,7 +153,7 @@ function Contact() {
             error={!!errors.email}
             helperText={errors.email}
             required
-            sx={{ mb: 3 }}
+            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' } } }}
           />
           <TextField
             fullWidth
@@ -164,7 +166,7 @@ function Contact() {
             required
             multiline
             rows={5}
-            sx={{ mb: 3 }}
+            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' } } }}
           />
           <Button
             type="submit"
@@ -181,6 +183,8 @@ function Contact() {
           >
             {isSubmitting ? <CircularProgress size={24} color="inherit" /> : t('form.submit')}
           </Button>
+          </Box>
+          </Box>
         </Box>
       </Container>
     </Box>
