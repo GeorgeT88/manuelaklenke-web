@@ -103,7 +103,7 @@ function Contact() {
       }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ backgroundColor: 'primary.main', py: { xs: 6, md: 10 }, px: { xs: 3, md: 6 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Box sx={{ backgroundColor: 'primary.main', py: { xs: 14, md: 18 }, px: { xs: 3, md: 6 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Box sx={{ width: '100%', maxWidth: 600 }}>
         <Typography
           variant="h2"
