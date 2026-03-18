@@ -16,9 +16,9 @@ import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
 
 const NAV_ITEMS = [
+  { labelKey: 'nav.home', href: '#home' },
   { labelKey: 'nav.about', href: '#about' },
-  { labelKey: 'nav.services', href: '#services' },
-  { labelKey: 'nav.testimonials', href: '#testimonials' },
+  { labelKey: 'nav.portfolio', href: '#services' },
   { labelKey: 'nav.contact', href: '#contact' },
 ];
 
@@ -27,7 +27,7 @@ const SECTION_IDS = NAV_ITEMS.map((item) => item.href.slice(1));
 function Navbar() {
   const { t } = useTranslation('common');
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const observer = new IntersectionObserver(

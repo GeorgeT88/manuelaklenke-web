@@ -1,8 +1,8 @@
 {
   "nav": {
+    "home": "Acasă",
     "about": "Despre mine",
-    "services": "Servicii",
-    "testimonials": "Testimoniale",
+    "portfolio": "Portofoliu",
     "contact": "Contact"
   },
   "logo": {

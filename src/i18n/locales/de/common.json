@@ -1,8 +1,8 @@
 {
   "nav": {
+    "home": "Startseite",
     "about": "Über mich",
-    "services": "Leistungen",
-    "testimonials": "Referenzen",
+    "portfolio": "Portfolio",
     "contact": "Kontakt"
   },
   "logo": {

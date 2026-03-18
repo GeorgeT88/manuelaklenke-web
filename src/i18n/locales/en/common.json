@@ -1,8 +1,8 @@
 {
   "nav": {
-    "about": "About",
-    "services": "Services",
-    "testimonials": "Testimonials",
+    "home": "Home",
+    "about": "About Me",
+    "portfolio": "Portfolio",
     "contact": "Contact"
   },
   "logo": {

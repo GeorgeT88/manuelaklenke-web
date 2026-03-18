@@ -11,6 +11,7 @@ function Hero() {
   return (
     <Box
       component="section"
+      id="home"
       sx={{
         minHeight: '100vh',
         display: 'flex',
