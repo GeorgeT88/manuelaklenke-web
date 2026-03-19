@@ -35,7 +35,7 @@ function Services() {
               alt={`Portfolio photo ${i + 1}`}
               sx={{
                 width: '100%',
-                height: 'auto',
+                aspectRatio: '2/3',
                 display: 'block',
                 objectFit: 'cover',
                 border: '4px solid #5C3D2E',
