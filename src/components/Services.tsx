@@ -38,6 +38,7 @@ function Services() {
                 height: 'auto',
                 display: 'block',
                 objectFit: 'cover',
+                border: '4px solid #5C3D2E',
               }}
             />
           ))}
