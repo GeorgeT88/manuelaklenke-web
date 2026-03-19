@@ -3,8 +3,11 @@ import Container from '@mui/material/Container';
 import p1 from '../photo/p1.png';
 import p2 from '../photo/p2.png';
 import p3 from '../photo/p3.png';
+import p4 from '../photo/p4.png';
+import p5 from '../photo/p5.png';
+import p6 from '../photo/p6.png';
 
-const PHOTOS = [p1, p2, p3];
+const PHOTOS = [p1, p2, p3, p4, p5, p6];
 
 function Services() {
   return (
