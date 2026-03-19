@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
@@ -16,38 +17,16 @@ import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
 
 const NAV_ITEMS = [
-  { labelKey: 'nav.home', href: '#home' },
-  { labelKey: 'nav.about', href: '#about' },
-  { labelKey: 'nav.portfolio', href: '#services' },
-  { labelKey: 'nav.contact', href: '#contact' },
+  { labelKey: 'nav.home', path: '/' },
+  { labelKey: 'nav.about', path: '/about' },
+  { labelKey: 'nav.portfolio', path: '/portfolio' },
+  { labelKey: 'nav.contact', path: '/contact' },
 ];
-
-const SECTION_IDS = NAV_ITEMS.map((item) => item.href.slice(1));
 
 function Navbar() {
   const { t } = useTranslation('common');
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-50% 0px -50% 0px' },
-    );
-
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const location = useLocation();
 
   return (
     <AppBar
@@ -76,12 +55,12 @@ function Navbar() {
             }}
           >
             {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
+              const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
               return (
-                <li key={item.href}>
+                <li key={item.path}>
                   <Button
-                    component="a"
-                    href={item.href}
+                    component={Link}
+                    to={item.path}
                     sx={{
                       color: isActive ? 'primary.contrastText' : 'text.primary',
                       backgroundColor: isActive ? 'primary.main' : 'transparent',
@@ -130,12 +109,12 @@ function Navbar() {
             >
               <List>
                 {NAV_ITEMS.map((item) => {
-                  const isActive = activeSection === item.href.slice(1);
+                  const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
                   return (
-                    <ListItem key={item.href} disablePadding>
+                    <ListItem key={item.path} disablePadding>
                       <ListItemButton
-                        component="a"
-                        href={item.href}
+                        component={Link}
+                        to={item.path}
                         sx={{
                           color: isActive ? 'secondary.main' : 'text.primary',
                           fontWeight: isActive ? 700 : 400,
