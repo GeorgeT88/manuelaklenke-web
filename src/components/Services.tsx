@@ -43,6 +43,8 @@ function Services() {
                   display: 'block',
                   objectFit: 'cover',
                   border: '4px solid #5C3D2E',
+                  transition: 'transform 0.3s ease',
+                  '&:hover': { transform: 'scale(1.05)' },
                 }}
               />
             );
