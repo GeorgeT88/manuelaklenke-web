@@ -71,17 +71,8 @@ function About() {
         }}
       >
         <Box>
-          <Typography variant="body1" sx={{ mb: 2.5, color: '#ffffff', lineHeight: 1.8 }}>
-            {t('paragraph1')}
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 2.5, color: '#ffffff', lineHeight: 1.8 }}>
-            {t('paragraph2')}
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 2.5, color: '#ffffff', lineHeight: 1.8 }}>
-            {t('paragraph3')}
-          </Typography>
-          <Typography variant="body1" sx={{ color: '#ffffff', lineHeight: 1.8 }}>
-            {t('paragraph4')}
+          <Typography variant="h5" sx={{ color: '#ffffff', fontStyle: 'italic' }}>
+            Under construction...
           </Typography>
         </Box>
       </Box>
