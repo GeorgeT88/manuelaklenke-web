@@ -10,7 +10,7 @@ import p7 from '../photo/p7.png';
 import p8 from '../photo/p8.png';
 
 const PHOTOS = [p1, p2, p3, p4, p5, p6, p7, p8];
-const LINKS: (string | null)[] = [null, null, null, 'https://www.danube-books.eu/florin-iaru-die-gruenen-brueste', null, null, null, null];
+const LINKS: (string | null)[] = ['https://edituratact.ro/carte/durs-grunbein-un-dispozitiv-pentru-captat-viitorul-poezii-alese-1988-2022/', 'https://edituratact.ro/carte/dincer-gucyeter-o-poveste-despre-germania-noastra/', 'https://mikrotext.de/book/lavinia-braniste-du-findest-mich-wenn-du-willst-roman/', 'https://www.danube-books.eu/florin-iaru-die-gruenen-brueste', 'https://www.amazon.de/-/en/re-volver-Gedichte-Livia-%C8%98tefan/dp/3988050407', 'https://www.maxblecher.ro/salutare_barbarilor.php', 'https://carturesti.ro/carte/null-komma-irgendwas-1728045253', 'https://www.amazon.com/Sonia-meldet-sich/dp/3948631107'];
 
 function Services() {
   return (
