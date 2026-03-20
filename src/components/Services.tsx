@@ -10,6 +10,7 @@ import p7 from '../photo/p7.png';
 import p8 from '../photo/p8.png';
 
 const PHOTOS = [p1, p2, p3, p4, p5, p6, p7, p8];
+const LINKS: (string | null)[] = [null, null, null, 'https://www.danube-books.eu/florin-iaru-die-gruenen-brueste', null, null, null, null];
 
 function Services() {
   return (
@@ -29,21 +30,28 @@ function Services() {
             gap: 3,
           }}
         >
-          {PHOTOS.map((src, i) => (
-            <Box
-              key={i}
-              component="img"
-              src={src}
-              alt={`Portfolio photo ${i + 1}`}
-              sx={{
-                width: '100%',
-                aspectRatio: '2/3',
-                display: 'block',
-                objectFit: 'cover',
-                border: '4px solid #5C3D2E',
-              }}
-            />
-          ))}
+          {PHOTOS.map((src, i) => {
+            const img = (
+              <Box
+                key={i}
+                component="img"
+                src={src}
+                alt={`Portfolio photo ${i + 1}`}
+                sx={{
+                  width: '100%',
+                  aspectRatio: '2/3',
+                  display: 'block',
+                  objectFit: 'cover',
+                  border: '4px solid #5C3D2E',
+                }}
+              />
+            );
+            return LINKS[i] ? (
+              <a key={i} href={LINKS[i]!} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
+                {img}
+              </a>
+            ) : img;
+          })}
         </Box>
       </Container>
     </Box>
