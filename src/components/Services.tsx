@@ -6,8 +6,10 @@ import p3 from '../photo/p3.png';
 import p4 from '../photo/p4.png';
 import p5 from '../photo/p5.png';
 import p6 from '../photo/p6.png';
+import p7 from '../photo/p7.png';
+import p8 from '../photo/p8.png';
 
-const PHOTOS = [p1, p2, p3, p4, p5, p6];
+const PHOTOS = [p1, p2, p3, p4, p5, p6, p7, p8];
 
 function Services() {
   return (
