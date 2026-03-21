@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import profilePhoto from '../photo/profilePhoto.png';
 
-function Hero() {
+function Home() {
   const { t } = useTranslation('common');
 
   return (
@@ -77,4 +77,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default Home;

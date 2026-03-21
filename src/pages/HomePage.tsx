@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import Hero from '../components/Hero';
+import Home from '../components/Home';
 
 function HomePage() {
   useEffect(() => {
@@ -7,7 +7,7 @@ function HomePage() {
     return () => { document.body.style.overflow = ''; };
   }, []);
 
-  return <Hero />;
+  return <Home />;
 }
 
 export default HomePage;
