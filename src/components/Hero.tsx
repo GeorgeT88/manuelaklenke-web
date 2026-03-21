@@ -12,9 +12,10 @@ function Hero() {
       component="section"
       id="home"
       sx={{
-        minHeight: '100vh',
+        height: '100vh',
+        overflow: 'hidden',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
         backgroundColor: '#ffffff',
       }}
@@ -37,7 +38,7 @@ function Hero() {
             width: '100%',
             height: { xs: '90vh', md: '95vh' },
             objectFit: 'contain',
-            objectPosition: 'center center',
+            objectPosition: { xs: 'center center', md: 'center top' },
             display: 'block',
           }}
         />

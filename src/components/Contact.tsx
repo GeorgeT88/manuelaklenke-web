@@ -95,7 +95,8 @@ function Contact() {
       component="section"
       id="contact"
       sx={{
-        minHeight: '100vh',
+        height: '100vh',
+        overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
         py: { xs: 6, md: 10 },

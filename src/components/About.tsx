@@ -15,18 +15,19 @@ function About() {
       component="section"
       id="about"
       sx={{
-        minHeight: '100vh',
+        height: '100vh',
+        overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
       }}
     >
       {/* Photo side */}
-      <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, minHeight: '100vh' }}>
+      <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, height: '100%' }}>
       <Box
         sx={{
           position: 'relative',
           flex: { md: 1 },
-          minHeight: { xs: '50vh', md: '100vh' },
+          height: { xs: '50%', md: '100%' },
         }}
       >
         <Box
