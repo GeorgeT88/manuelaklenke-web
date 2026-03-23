@@ -52,25 +52,44 @@ function Home() {
           }}
         />
 
-        {/* Name */}
-        <Typography
-          variant="h1"
-          component="h1"
+        {/* Name + tagline */}
+        <Box
           sx={{
             position: 'absolute',
             bottom: '30%',
             left: 0,
             right: 0,
             textAlign: 'center',
-            color: '#ffffff',
-            fontWeight: 400,
-            fontSize: { xs: '1.6rem', sm: '2.2rem', md: '2.8rem' },
-            letterSpacing: { xs: '0.15em', md: '0.25em' },
-            textTransform: 'uppercase',
           }}
         >
-          {t('logo.name')} {t('logo.surname')}
-        </Typography>
+          <Typography
+            variant="h1"
+            component="h1"
+            sx={{
+              color: '#ffffff',
+              fontWeight: 400,
+              fontSize: { xs: '1.6rem', sm: '2.2rem', md: '2.8rem' },
+              letterSpacing: { xs: '0.15em', md: '0.25em' },
+              textTransform: 'uppercase',
+            }}
+          >
+            {t('logo.name')} {t('logo.surname')}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            component="p"
+            sx={{
+              color: '#ffffff',
+              fontWeight: 300,
+              fontSize: { xs: '0.75rem', sm: '0.9rem', md: '1rem' },
+              letterSpacing: { xs: '0.1em', md: '0.18em' },
+              mt: 0.75,
+              opacity: 0.9,
+            }}
+          >
+            Translator&nbsp;|&nbsp;RO · DE · EN
+          </Typography>
+        </Box>
       </Box>
       </Container>
     </Box>
