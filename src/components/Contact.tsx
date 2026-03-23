@@ -142,7 +142,7 @@ function Contact() {
             error={!!errors.name}
             helperText={errors.name}
             required
-            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' } } }}
+            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)', '&.Mui-focused': { color: '#fff' } }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' }, '&.Mui-focused fieldset': { borderColor: '#fff' }, '& input:-webkit-autofill': { WebkitBoxShadow: '0 0 0 100px #5B4A3F inset', WebkitTextFillColor: '#fff' } } }}
           />
           <TextField
             fullWidth
@@ -154,7 +154,7 @@ function Contact() {
             error={!!errors.email}
             helperText={errors.email}
             required
-            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' } } }}
+            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)', '&.Mui-focused': { color: '#fff' } }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' }, '&.Mui-focused fieldset': { borderColor: '#fff' }, '& input:-webkit-autofill': { WebkitBoxShadow: '0 0 0 100px #5B4A3F inset', WebkitTextFillColor: '#fff' } } }}
           />
           <TextField
             fullWidth
@@ -167,7 +167,7 @@ function Contact() {
             required
             multiline
             rows={5}
-            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)' }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' } } }}
+            sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)', '&.Mui-focused': { color: '#fff' } }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' }, '&.Mui-focused fieldset': { borderColor: '#fff' }, '& textarea:-webkit-autofill': { WebkitBoxShadow: '0 0 0 100px #5B4A3F inset', WebkitTextFillColor: '#fff' } } }}
           />
           <Button
             type="submit"
