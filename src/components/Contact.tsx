@@ -97,14 +97,11 @@ function Contact() {
       sx={{
         height: '100vh',
         overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        py: { xs: 6, md: 10 },
         backgroundColor: 'background.default',
       }}
     >
-      <Container maxWidth="lg">
-        <Box sx={{ backgroundColor: 'primary.main', py: { xs: 14, md: 18 }, px: { xs: 3, md: 6 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', alignItems: 'stretch' }}>
+        <Box sx={{ flex: 1, backgroundColor: 'primary.main', px: { xs: 3, md: 6 }, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <Box sx={{ width: '100%', maxWidth: 600 }}>
         <Typography
           variant="h2"
