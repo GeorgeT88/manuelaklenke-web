@@ -87,7 +87,7 @@ function Home() {
               opacity: 0.9,
             }}
           >
-            Translator&nbsp;|&nbsp;RO · DE · EN
+            {t('logo.subtitle')}
           </Typography>
         </Box>
       </Box>
