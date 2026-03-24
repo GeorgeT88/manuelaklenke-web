@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function Footer() {
   const { t } = useTranslation('legal');
+  const [visible, setVisible] = useState(true);
+
+  if (!visible) return null;
 
   return (
     <Box
@@ -18,6 +24,7 @@ function Footer() {
         px: 2,
         display: 'flex',
         justifyContent: 'center',
+        alignItems: 'center',
         gap: 3,
         backgroundColor: 'background.paper',
         borderTop: '1px solid',
@@ -41,6 +48,13 @@ function Footer() {
       >
         {t('footer.imprint')}
       </Typography>
+      <IconButton
+        size="small"
+        onClick={() => setVisible(false)}
+        sx={{ position: 'absolute', right: 8, color: 'text.secondary' }}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
     </Box>
   );
 }
