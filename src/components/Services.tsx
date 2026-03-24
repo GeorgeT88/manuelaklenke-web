@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
 import p1 from '../photo/p1.png';
 import p2 from '../photo/p2.png';
 import p3 from '../photo/p3.png';
@@ -14,6 +15,7 @@ const PHOTOS = [p1, p2, p3, p4, p5, p6, p7, p8];
 const LINKS: (string | null)[] = ['https://edituratact.ro/carte/durs-grunbein-un-dispozitiv-pentru-captat-viitorul-poezii-alese-1988-2022/', 'https://edituratact.ro/carte/dincer-gucyeter-o-poveste-despre-germania-noastra/', 'https://mikrotext.de/book/lavinia-braniste-du-findest-mich-wenn-du-willst-roman/', 'https://www.danube-books.eu/florin-iaru-die-gruenen-brueste', 'https://www.amazon.de/-/en/re-volver-Gedichte-Livia-%C8%98tefan/dp/3988050407', 'https://www.maxblecher.ro/salutare_barbarilor.php', 'https://carturesti.ro/carte/null-komma-irgendwas-1728045253', 'https://www.amazon.com/Sonia-meldet-sich/dp/3948631107'];
 
 function Services() {
+  const { t } = useTranslation('services');
   return (
     <Box
       component="section"
@@ -28,7 +30,7 @@ function Services() {
           variant="h4"
           sx={{ mb: { xs: 3, md: 5 }, fontWeight: 700, color: 'primary.main' }}
         >
-          Translated books:
+          {t('translatedBooks')}
         </Typography>
         <Box
           sx={{
