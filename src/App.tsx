@@ -7,10 +7,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import theme from './theme';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import ImprintPage from './pages/ImprintPage';
 import useDocumentMeta from './hooks/useDocumentMeta';
 import { useTranslation } from 'react-i18next';
 
@@ -51,8 +54,11 @@ function AppContent() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/imprint" element={<ImprintPage />} />
         </Routes>
       </Box>
+      <Footer />
       <Analytics />
       <SpeedInsights />
     </ThemeProvider>

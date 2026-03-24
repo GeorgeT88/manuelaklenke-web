@@ -1,0 +1,30 @@
+{
+  "footer": {
+    "privacy": "Datenschutz",
+    "imprint": "Impressum"
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "intro": "Ihre Privatsphäre ist uns wichtig. Diese Seite erläutert, welche Daten beim Besuch dieser Website erhoben werden.",
+    "analytics": {
+      "heading": "Analyse",
+      "body": "Diese Website verwendet Vercel Analytics zur Erfassung anonymisierter Nutzungsstatistiken (besuchte Seiten, Herkunftsquellen, Länder, Gerätetypen). Es werden keine Cookies gesetzt, keine personenbezogenen Daten gespeichert und kein Cookie-Banner benötigt. Weitere Informationen finden Sie in der Datenschutzrichtlinie von Vercel unter vercel.com/legal/privacy-policy."
+    },
+    "contact": {
+      "heading": "Kontakt für Datenschutzanfragen",
+      "body": "Für datenschutzbezogene Fragen wenden Sie sich bitte an: manuela@manuelaklenke.com"
+    }
+  },
+  "imprint": {
+    "title": "Impressum",
+    "responsible": {
+      "heading": "Verantwortlich für den Inhalt",
+      "name": "Manuela Klenke",
+      "email": "manuela@manuelaklenke.com"
+    },
+    "disclaimer": {
+      "heading": "Haftungsausschluss",
+      "body": "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "footer": {
+    "privacy": "Politică de Confidențialitate",
+    "imprint": "Mențiuni Legale"
+  },
+  "privacy": {
+    "title": "Politică de Confidențialitate",
+    "intro": "Confidențialitatea dvs. este importantă pentru noi. Această pagină explică ce date sunt colectate când vizitați acest site.",
+    "analytics": {
+      "heading": "Analiză",
+      "body": "Acest site folosește Vercel Analytics pentru a colecta statistici anonimizate (pagini vizitate, surse de trafic, țări, tipuri de dispozitive). Nu sunt setate cookie-uri, nu sunt stocate date personale și nu este necesară o bară de consimțământ. Pentru mai multe informații, vizitați politica de confidențialitate Vercel la vercel.com/legal/privacy-policy."
+    },
+    "contact": {
+      "heading": "Contact pentru Întrebări privind Confidențialitatea",
+      "body": "Pentru orice întrebări legate de confidențialitate, vă rugăm să contactați: manuela@manuelaklenke.com"
+    }
+  },
+  "imprint": {
+    "title": "Mențiuni Legale",
+    "responsible": {
+      "heading": "Responsabil pentru Conținut",
+      "name": "Manuela Klenke",
+      "email": "manuela@manuelaklenke.com"
+    },
+    "disclaimer": {
+      "heading": "Declinarea Răspunderii",
+      "body": "În ciuda controlului atent al conținutului, nu ne asumăm răspunderea pentru conținutul linkurilor externe. Operatorii paginilor legate sunt singuri responsabili pentru conținutul lor."
+    }
+  }
+}

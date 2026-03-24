@@ -1,0 +1,30 @@
+{
+  "footer": {
+    "privacy": "Privacy Policy",
+    "imprint": "Imprint"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "Your privacy is important to us. This page explains what data is collected when you visit this website.",
+    "analytics": {
+      "heading": "Analytics",
+      "body": "This website uses Vercel Analytics to collect anonymised usage statistics (pages visited, referrers, countries, device types). No cookies are set, no personal data is stored, and no consent banner is required. For more information, visit Vercel's privacy policy at vercel.com/legal/privacy-policy."
+    },
+    "contact": {
+      "heading": "Contact for Privacy Enquiries",
+      "body": "For any privacy-related questions, please contact: manuela@manuelaklenke.com"
+    }
+  },
+  "imprint": {
+    "title": "Imprint",
+    "responsible": {
+      "heading": "Responsible for Content",
+      "name": "Manuela Klenke",
+      "email": "manuela@manuelaklenke.com"
+    },
+    "disclaimer": {
+      "heading": "Disclaimer",
+      "body": "Despite careful content control, we assume no liability for the content of external links. The operators of linked pages are solely responsible for their content."
+    }
+  }
+}
