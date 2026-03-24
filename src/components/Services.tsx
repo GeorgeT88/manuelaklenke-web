@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import p1 from '../photo/p1.png';
 import p2 from '../photo/p2.png';
 import p3 from '../photo/p3.png';
@@ -18,11 +19,17 @@ function Services() {
       component="section"
       id="services"
       sx={{
-        py: { xs: 6, md: 10 },
+        py: { xs: 3, md: 5 },
         backgroundColor: '#ffffff',
       }}
     >
       <Container maxWidth="lg">
+        <Typography
+          variant="h4"
+          sx={{ mb: { xs: 3, md: 5 }, fontWeight: 700, color: 'primary.main' }}
+        >
+          Translated books:
+        </Typography>
         <Box
           sx={{
             display: 'grid',
