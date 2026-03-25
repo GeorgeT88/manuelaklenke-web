@@ -24,36 +24,6 @@ function EventsPage() {
             {t('heading')}
           </Typography>
 
-          {/* Die guten Tage VI */}
-          <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
-            <Box
-              component="img"
-              src={dieGuteTageImg}
-              alt={t('dieGuteTage.title')}
-              sx={{ width: '100%', maxWidth: 520, borderRadius: 2, mb: 3, display: 'block' }}
-            />
-            <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
-              {t('dieGuteTage.title')}
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 0.5, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic' }}>
-              {t('dieGuteTage.date')}
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.65)' }}>
-              {t('dieGuteTage.location')}
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 680 }}>
-              {t('dieGuteTage.description')}
-            </Typography>
-            <Link
-              href="https://lcb.de/programm/die-guten-tage-6/"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
-            >
-              {t('dieGuteTage.link')} →
-            </Link>
-          </Box>
-
           {/* Leipziger Buchmesse */}
           <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
             <Box
@@ -84,6 +54,36 @@ function EventsPage() {
                 {t('leipzigerBuchmesse.link1')} →
               </Link>
             </Box>
+          </Box>
+
+          {/* Die guten Tage VI */}
+          <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
+            <Box
+              component="img"
+              src={dieGuteTageImg}
+              alt={t('dieGuteTage.title')}
+              sx={{ width: '100%', maxWidth: 520, borderRadius: 2, mb: 3, display: 'block' }}
+            />
+            <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
+              {t('dieGuteTage.title')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 0.5, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic' }}>
+              {t('dieGuteTage.date')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.65)' }}>
+              {t('dieGuteTage.location')}
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 680 }}>
+              {t('dieGuteTage.description')}
+            </Typography>
+            <Link
+              href="https://lcb.de/programm/die-guten-tage-6/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
+            >
+              {t('dieGuteTage.link')} →
+            </Link>
           </Box>
 
         </Box>
