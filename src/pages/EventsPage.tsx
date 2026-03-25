@@ -25,7 +25,7 @@ function EventsPage() {
           </Typography>
 
           {/* Die guten Tage VI */}
-          <Box sx={{ mb: 8 }}>
+          <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
             <Box
               component="img"
               src={dieGuteTageImg}
@@ -55,7 +55,7 @@ function EventsPage() {
           </Box>
 
           {/* Leipziger Buchmesse */}
-          <Box sx={{ mb: 8 }}>
+          <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
             <Box
               component="img"
               src={buchmesseImg}
