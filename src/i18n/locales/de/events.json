@@ -6,5 +6,16 @@
     "location": "Literarisches Colloquium Berlin, Am Sandwerder 5, 14109 Berlin",
     "description": "Ein Abend für südosteuropäische Lyrik, gemeinsam veranstaltet von TRADUKI und dem Literarischen Colloquium Berlin. Manuela Klenke übersetzte und las aus \"re.volver\" der rumänischen Dichterin Livia Ștefan — eine eindringliche Gedichtsammlung über Trauma, Erinnerung und persönliche Transformation.",
     "link": "Mehr zur Veranstaltung"
+  },
+  "leipzigerBuchmesse": {
+    "title": "Leipziger Buchmesse",
+    "date": "27. März 2025",
+    "description": "Eine der bedeutendsten Frühjahrsmessen für die Buch- und Medienbranche in Europa, die vom 27.–30. März 2025 in Leipzig stattfindet. Die Messe bringt Leserinnen und Leser, Autorinnen und Autoren, Verlage und Medien aus aller Welt zusammen. Unter dem Motto \"Worte bewegen Welten\" präsentiert die Ausgabe 2025 Norwegen als Gastland und findet parallel zu Leipzig liest statt — Europas größtem Lesefestival mit fast 3.000 Veranstaltungen in der ganzen Stadt.",
+    "link1": "Mehr zur Messe",
+    "link2": "LEIPZIGINFO.DE"
+  },
+  "worteBewegenWelten": {
+    "title": "Worte bewegen Welten – Leipziger Buchmesse 2025",
+    "link": "Zum Artikel"
   }
 }
