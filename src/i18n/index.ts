@@ -9,6 +9,7 @@ import servicesEn from './locales/en/services.json';
 import testimonialsEn from './locales/en/testimonials.json';
 import contactEn from './locales/en/contact.json';
 import legalEn from './locales/en/legal.json';
+import eventsEn from './locales/en/events.json';
 
 import commonRo from './locales/ro/common.json';
 import heroRo from './locales/ro/hero.json';
@@ -17,6 +18,7 @@ import servicesRo from './locales/ro/services.json';
 import testimonialsRo from './locales/ro/testimonials.json';
 import contactRo from './locales/ro/contact.json';
 import legalRo from './locales/ro/legal.json';
+import eventsRo from './locales/ro/events.json';
 
 import commonDe from './locales/de/common.json';
 import heroDe from './locales/de/hero.json';
@@ -25,6 +27,7 @@ import servicesDe from './locales/de/services.json';
 import testimonialsDe from './locales/de/testimonials.json';
 import contactDe from './locales/de/contact.json';
 import legalDe from './locales/de/legal.json';
+import eventsDe from './locales/de/events.json';
 
 export const supportedLanguages = [
   { code: 'en', shortName: 'EN', name: 'English' },
@@ -45,6 +48,7 @@ i18n
         testimonials: testimonialsEn,
         contact: contactEn,
         legal: legalEn,
+        events: eventsEn,
       },
       ro: {
         common: commonRo,
@@ -54,6 +58,7 @@ i18n
         testimonials: testimonialsRo,
         contact: contactRo,
         legal: legalRo,
+        events: eventsRo,
       },
       de: {
         common: commonDe,
@@ -63,6 +68,7 @@ i18n
         testimonials: testimonialsDe,
         contact: contactDe,
         legal: legalDe,
+        events: eventsDe,
       },
     },
     fallbackLng: 'en',
