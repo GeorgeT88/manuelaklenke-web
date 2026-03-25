@@ -101,7 +101,7 @@ function Contact() {
       }}
     >
       <Container maxWidth="lg" sx={{ height: '100%', display: 'flex', alignItems: 'stretch' }}>
-        <Box sx={{ flex: 1, backgroundColor: 'primary.main', px: { xs: 3, md: 6 }, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <Box sx={{ flex: 1, backgroundColor: 'primary.main', px: { xs: 3, md: 6 }, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', pb: 12 }}>
           <Box sx={{ width: '100%', maxWidth: 600 }}>
         <Typography
           variant="h2"

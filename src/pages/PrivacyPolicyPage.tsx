@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -6,9 +7,14 @@ import Typography from '@mui/material/Typography';
 function PrivacyPolicyPage() {
   const { t } = useTranslation('legal');
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
+  }, []);
+
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
-      <Container maxWidth="lg" sx={{ minHeight: '100vh', display: 'flex' }}>
+    <Box sx={{ height: '100vh', overflow: 'hidden', backgroundColor: 'background.default' }}>
+      <Container maxWidth="lg" sx={{ height: '100vh', display: 'flex' }}>
         <Box sx={{ flex: 1, backgroundColor: 'primary.main', px: { xs: 3, md: 6 }, py: 6 }}>
           <Typography variant="h3" component="h1" sx={{ mb: 4, color: '#ffffff', fontWeight: 700 }}>
             {t('privacy.title')}
