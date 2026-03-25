@@ -20,6 +20,7 @@ const NAV_ITEMS = [
   { labelKey: 'nav.home', path: '/' },
   { labelKey: 'nav.about', path: '/about' },
   { labelKey: 'nav.portfolio', path: '/portfolio' },
+  { labelKey: 'nav.events', path: '/events' },
   { labelKey: 'nav.contact', path: '/contact' },
 ];
 
@@ -67,7 +68,7 @@ function Navbar() {
                       textTransform: 'none',
                       fontWeight: isActive ? 600 : 500,
                       borderRadius: 6,
-                      px: 2.5,
+                      px: 1.5,
                       py: 0.8,
                       '&:hover': {
                         color: isActive ? 'primary.contrastText' : 'secondary.main',
