@@ -8,7 +8,6 @@ const TEXT_BG = '#5B4A3F';
 
 function About() {
   const { t } = useTranslation('about');
-  const { t: tCommon } = useTranslation('common');
 
   return (
     <Box
@@ -43,21 +42,6 @@ function About() {
           }}
         />
 
-        {/* Name overlay — mobile only */}
-        <Typography
-          sx={{
-            display: { xs: 'block', md: 'none' },
-            position: 'absolute',
-            top: 16,
-            right: 16,
-            color: '#ffffff',
-            fontWeight: 500,
-            fontSize: '0.95rem',
-            letterSpacing: '0.05em',
-          }}
-        >
-          {tCommon('logo.name')} {tCommon('logo.surname')}
-        </Typography>
       </Box>
 
       {/* Text side */}
