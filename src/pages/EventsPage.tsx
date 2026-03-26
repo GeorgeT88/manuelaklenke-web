@@ -67,49 +67,17 @@ function EventsPage() {
           <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
             {/* Carousel */}
             <Box sx={{ width: '100%', maxWidth: 520, mb: 3 }}>
-              {/* Image with overlaid buttons on desktop only */}
-              <Box sx={{ position: 'relative' }}>
-                <Box
+              <Box
                   component="img"
                   src={dieGuteTagePhotos[carouselIndex]}
                   alt={`${t('dieGuteTage.title')} ${carouselIndex + 1}`}
                   sx={{ width: '100%', borderRadius: 2, display: 'block' }}
                 />
-                {/* Prev button — desktop only, overlaid */}
-                <IconButton
-                  onClick={() => setCarouselIndex((carouselIndex - 1 + dieGuteTagePhotos.length) % dieGuteTagePhotos.length)}
-                  sx={{
-                    display: { xs: 'none', md: 'flex' },
-                    position: 'absolute', left: 8, top: '50%', transform: 'translateY(-50%)',
-                    backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
-                    width: 28, height: 28, borderRadius: '50%',
-                    '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
-                  }}
-                  aria-label="previous photo"
-                >
-                  ‹
-                </IconButton>
-                {/* Next button — desktop only, overlaid */}
-                <IconButton
-                  onClick={() => setCarouselIndex((carouselIndex + 1) % dieGuteTagePhotos.length)}
-                  sx={{
-                    display: { xs: 'none', md: 'flex' },
-                    position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)',
-                    backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
-                    width: 28, height: 28, borderRadius: '50%',
-                    '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
-                  }}
-                  aria-label="next photo"
-                >
-                  ›
-                </IconButton>
-              </Box>
-              {/* Controls row: prev | dots | next — mobile: always visible; desktop: hidden (using overlaid buttons) */}
+              {/* Controls row: prev | dots | next */}
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, mt: 1 }}>
                 <IconButton
                   onClick={() => setCarouselIndex((carouselIndex - 1 + dieGuteTagePhotos.length) % dieGuteTagePhotos.length)}
                   sx={{
-                    display: { xs: 'flex', md: 'none' },
                     backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
                     width: 28, height: 28, borderRadius: '50%',
                     '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
@@ -132,7 +100,6 @@ function EventsPage() {
                 <IconButton
                   onClick={() => setCarouselIndex((carouselIndex + 1) % dieGuteTagePhotos.length)}
                   sx={{
-                    display: { xs: 'flex', md: 'none' },
                     backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
                     width: 28, height: 28, borderRadius: '50%',
                     '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
