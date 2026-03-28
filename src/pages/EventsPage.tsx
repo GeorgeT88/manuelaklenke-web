@@ -1,22 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import IconButton from '@mui/material/IconButton';
 import dieGuteTageImg2 from '../photo/p11.png';
-import dieGuteTageImg3 from '../photo/p12.png';
 import buchmesseImg from '../photo/p10.png';
-import buchmesseImg2 from '../photo/p13.png';
-
-const dieGuteTagePhotos = [dieGuteTageImg2, dieGuteTageImg3];
-const buchmessePhotos = [buchmesseImg, buchmesseImg2];
 
 function EventsPage() {
   const { t } = useTranslation('events');
-  const [carouselIndex, setCarouselIndex] = useState(0);
-  const [buchmesseIndex, setBuchmesseIndex] = useState(0);
 
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
@@ -35,49 +26,13 @@ function EventsPage() {
 
           {/* Leipziger Buchmesse */}
           <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
-            {/* Carousel */}
             <Box sx={{ width: '100%', maxWidth: 400, mb: 3 }}>
               <Box
                 component="img"
-                src={buchmessePhotos[buchmesseIndex]}
-                alt={`${t('leipzigerBuchmesse.title')} ${buchmesseIndex + 1}`}
+                src={buchmesseImg}
+                alt={t('leipzigerBuchmesse.title')}
                 sx={{ width: '100%', borderRadius: 2, display: 'block' }}
               />
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, mt: 1 }}>
-                <IconButton
-                  onClick={() => setBuchmesseIndex((buchmesseIndex - 1 + buchmessePhotos.length) % buchmessePhotos.length)}
-                  sx={{
-                    backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
-                    width: 28, height: 28, borderRadius: '50%',
-                    '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
-                  }}
-                  aria-label="previous photo"
-                >
-                  ‹
-                </IconButton>
-                {buchmessePhotos.map((_, i) => (
-                  <Box
-                    key={i}
-                    onClick={() => setBuchmesseIndex(i)}
-                    sx={{
-                      width: 8, height: 8, borderRadius: '50%', cursor: 'pointer',
-                      backgroundColor: i === buchmesseIndex ? '#fff' : 'rgba(255,255,255,0.35)',
-                      transition: 'background-color 0.2s',
-                    }}
-                  />
-                ))}
-                <IconButton
-                  onClick={() => setBuchmesseIndex((buchmesseIndex + 1) % buchmessePhotos.length)}
-                  sx={{
-                    backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
-                    width: 28, height: 28, borderRadius: '50%',
-                    '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
-                  }}
-                  aria-label="next photo"
-                >
-                  ›
-                </IconButton>
-              </Box>
             </Box>
             <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
               {t('leipzigerBuchmesse.title')}
@@ -105,50 +60,13 @@ function EventsPage() {
 
           {/* Die guten Tage VI */}
           <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
-            {/* Carousel */}
             <Box sx={{ width: '100%', maxWidth: 400, mb: 3 }}>
               <Box
-                  component="img"
-                  src={dieGuteTagePhotos[carouselIndex]}
-                  alt={`${t('dieGuteTage.title')} ${carouselIndex + 1}`}
-                  sx={{ width: '100%', borderRadius: 2, display: 'block' }}
-                />
-              {/* Controls row: prev | dots | next */}
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, mt: 1 }}>
-                <IconButton
-                  onClick={() => setCarouselIndex((carouselIndex - 1 + dieGuteTagePhotos.length) % dieGuteTagePhotos.length)}
-                  sx={{
-                    backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
-                    width: 28, height: 28, borderRadius: '50%',
-                    '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
-                  }}
-                  aria-label="previous photo"
-                >
-                  ‹
-                </IconButton>
-                {dieGuteTagePhotos.map((_, i) => (
-                  <Box
-                    key={i}
-                    onClick={() => setCarouselIndex(i)}
-                    sx={{
-                      width: 8, height: 8, borderRadius: '50%', cursor: 'pointer',
-                      backgroundColor: i === carouselIndex ? '#fff' : 'rgba(255,255,255,0.35)',
-                      transition: 'background-color 0.2s',
-                    }}
-                  />
-                ))}
-                <IconButton
-                  onClick={() => setCarouselIndex((carouselIndex + 1) % dieGuteTagePhotos.length)}
-                  sx={{
-                    backgroundColor: 'rgba(0,0,0,0.45)', color: '#fff',
-                    width: 28, height: 28, borderRadius: '50%',
-                    '&:hover': { backgroundColor: 'rgba(0,0,0,0.7)' },
-                  }}
-                  aria-label="next photo"
-                >
-                  ›
-                </IconButton>
-              </Box>
+                component="img"
+                src={dieGuteTageImg2}
+                alt={t('dieGuteTage.title')}
+                sx={{ width: '100%', borderRadius: 2, display: 'block' }}
+              />
             </Box>
             <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
               {t('dieGuteTage.title')}
