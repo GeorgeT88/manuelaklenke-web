@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import dieGuteTageImg2 from '../photo/p11.png';
 import buchmesseImg from '../photo/p10.png';
+import naturalezasImg from '../photo/p9.png';
 
 function EventsPage() {
   const { t } = useTranslation('events');
@@ -87,6 +88,35 @@ function EventsPage() {
               sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
             >
               {t('dieGuteTage.link')} →
+            </Link>
+          </Box>
+
+          {/* Naturalezas Literarias */}
+          <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
+            <Box sx={{ width: '100%', maxWidth: 400, mb: 3 }}>
+              <Box
+                component="img"
+                src={naturalezasImg}
+                alt={t('naturalezasLiterarias.title')}
+                sx={{ width: '100%', borderRadius: 2, display: 'block' }}
+              />
+            </Box>
+            <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
+              {t('naturalezasLiterarias.title')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic' }}>
+              {t('naturalezasLiterarias.date')}
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 680 }}>
+              {t('naturalezasLiterarias.description')}
+            </Typography>
+            <Link
+              href="https://www.instagram.com/p/CsG9kEqIQBY/?igsh=ejhlZWgxaWJibjln"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
+            >
+              {t('naturalezasLiterarias.link')} →
             </Link>
           </Box>
 
