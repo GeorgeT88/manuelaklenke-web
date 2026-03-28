@@ -100,6 +100,18 @@ function EventsPage() {
                 alt={t('naturalezasLiterarias.title')}
                 sx={{ width: '100%', borderRadius: 2, display: 'block' }}
               />
+              <Link
+                href="https://www.instagram.com/stabios.litbuerown?igsh=bm91NXpjbHQ5YnR2"
+                target="_blank"
+                rel="noopener noreferrer"
+                underline="none"
+                sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5, mt: 1, px: 0.75, py: 0.25, borderRadius: 1, backgroundColor: 'rgba(255,255,255,0.35)', '&:hover': { backgroundColor: 'rgba(255,255,255,0.5)' } }}
+              >
+                <Typography sx={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1 }}>📷</Typography>
+                <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.95)' }}>
+                  by stabios.litbuerown
+                </Typography>
+              </Link>
             </Box>
             <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
               {t('naturalezasLiterarias.title')}
