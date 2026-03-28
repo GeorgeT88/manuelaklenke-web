@@ -114,7 +114,7 @@ function EventsPage() {
               {t('naturalezasLiterarias.description')}
             </Typography>
             <Link
-              href="https://www.instagram.com/p/CsG9kEqIQBY/?igsh=ejhlZWgxaWJibjln"
+              href="https://www.signaturen-magazin.de/simona-popescu--fuenf-gedichte.html"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
