@@ -104,8 +104,11 @@ function EventsPage() {
             <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
               {t('naturalezasLiterarias.title')}
             </Typography>
-            <Typography variant="body2" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic' }}>
+            <Typography variant="body2" sx={{ mb: 0.5, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic' }}>
               {t('naturalezasLiterarias.date')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.65)' }}>
+              {t('naturalezasLiterarias.location')}
             </Typography>
             <Typography variant="body1" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 680 }}>
               {t('naturalezasLiterarias.description')}
