@@ -6,6 +6,7 @@ import Link from '@mui/material/Link';
 import dieGuteTageImg2 from '../photo/p11.png';
 import buchmesseImg from '../photo/p10.png';
 import naturalezasImg from '../photo/p9.png';
+import viceVersaImg from '../photo/p12.png';
 
 function EventsPage() {
   const { t } = useTranslation('events');
@@ -156,6 +157,44 @@ function EventsPage() {
               sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
             >
               {t('naturalezasLiterarias.link')} →
+            </Link>
+          </Box>
+
+          {/* ViceVersa 2023 */}
+          <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
+            <Box sx={{ width: '100%', maxWidth: 400, mb: 3 }}>
+              <Box
+                component="img"
+                src={viceVersaImg}
+                alt={t('viceVersa2023.title')}
+                sx={{ width: '100%', borderRadius: 2, display: 'block' }}
+              />
+              <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5, mt: 1, px: 0.75, py: 0.25, borderRadius: 1, backgroundColor: 'rgba(255,255,255,0.35)' }}>
+                <Typography sx={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1 }}>📷</Typography>
+                <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.95)' }}>
+                  by Marius Şumlea
+                </Typography>
+              </Box>
+            </Box>
+            <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
+              {t('viceVersa2023.title')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 0.5, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic' }}>
+              {t('viceVersa2023.date')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.65)' }}>
+              {t('viceVersa2023.location')}
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 680 }}>
+              {t('viceVersa2023.description')}
+            </Typography>
+            <Link
+              href="https://www.toledo-programm.de/projekte/5/viceversa/5438/viceversa-deutsch-rumaenische-werkstatt"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
+            >
+              {t('viceVersa2023.link')} →
             </Link>
           </Box>
 
