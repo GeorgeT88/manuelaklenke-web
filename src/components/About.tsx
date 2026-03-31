@@ -29,6 +29,7 @@ function About() {
           position: 'relative',
           flex: { md: 1 },
           height: { xs: 'auto', md: '100%' },
+          backgroundColor: { xs: '#C4A882', md: 'transparent' },
         }}
       >
         <Box
@@ -37,9 +38,9 @@ function About() {
           alt={t('imageAlt')}
           sx={{
             width: '100%',
-            height: '50vh',
-            objectFit: 'cover',
-            objectPosition: 'center top',
+            height: 'auto',
+            maxHeight: '35vh',
+            objectFit: 'contain',
             display: { xs: 'block', md: 'none' },
           }}
         />
