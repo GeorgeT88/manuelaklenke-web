@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import profilePhoto1 from '../photo/profilePhoto1.png';
+import profilePhoto1 from '../photo/profilePhoto2.png';
 
 const TEXT_BG = '#5B4A3F';
 
@@ -55,9 +55,18 @@ function About() {
           py: { xs: 5, md: 0 },
         }}
       >
-        <Box>
-          <Typography variant="h5" sx={{ color: '#ffffff', fontStyle: 'italic' }}>
-            Under construction...
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Typography variant="h4" sx={{ color: '#ffffff', mb: 1 }}>
+            {t('heading')}
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#ffffff' }}>
+            {t('paragraph1')}
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#ffffff' }}>
+            {t('paragraph2')}
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#ffffff' }}>
+            {t('paragraph3')}
           </Typography>
         </Box>
       </Box>
