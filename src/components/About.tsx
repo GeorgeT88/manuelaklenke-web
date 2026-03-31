@@ -64,9 +64,11 @@ function About() {
           flex: { md: 1 },
           backgroundColor: TEXT_BG,
           display: 'flex',
-          alignItems: 'center',
+          alignItems: { xs: 'flex-start', md: 'center' },
           px: { xs: 3, md: 6, lg: 8 },
-          py: { xs: 5, md: 0 },
+          py: { xs: 3, md: 0 },
+          overflowY: { xs: 'auto', md: 'visible' },
+          height: { xs: '50vh', md: 'auto' },
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
