@@ -29,7 +29,7 @@ function About() {
           position: 'relative',
           flex: { md: 1 },
           height: { xs: 'auto', md: '100%' },
-          backgroundColor: { xs: '#C4A882', md: 'transparent' },
+          backgroundColor: { xs: TEXT_BG, md: 'transparent' },
         }}
       >
         <Box
