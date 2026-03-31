@@ -71,7 +71,7 @@ function About() {
           height: { xs: '50vh', md: 'auto' },
         }}
       >
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pb: { xs: 8, md: 0 } }}>
           <Typography variant="h4" sx={{ color: '#ffffff', mb: 1 }}>
             {t('heading')}
           </Typography>
