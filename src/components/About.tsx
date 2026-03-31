@@ -2,7 +2,8 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import profilePhoto1 from '../photo/profilePhoto2.png';
+import profilePhotoDesktop from '../photo/profilePhoto2.png';
+import profilePhotoMobile from '../photo/profilePhoto3.png';
 
 const TEXT_BG = '#5B4A3F';
 
@@ -14,31 +15,44 @@ function About() {
       component="section"
       id="about"
       sx={{
-        height: '100vh',
-        overflow: 'hidden',
+        minHeight: '100vh',
+        overflow: { xs: 'visible', md: 'hidden' },
+        height: { xs: 'auto', md: '100vh' },
         display: 'flex',
         justifyContent: 'center',
       }}
     >
       {/* Photo side */}
-      <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, height: '100%' }}>
+      <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, height: { xs: 'auto', md: '100%' } }}>
       <Box
         sx={{
           position: 'relative',
           flex: { md: 1 },
-          height: { xs: '50%', md: '100%' },
+          height: { xs: 'auto', md: '100%' },
         }}
       >
         <Box
           component="img"
-          src={profilePhoto1}
+          src={profilePhotoMobile}
+          alt={t('imageAlt')}
+          sx={{
+            width: '100%',
+            height: '50vh',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+            display: { xs: 'block', md: 'none' },
+          }}
+        />
+        <Box
+          component="img"
+          src={profilePhotoDesktop}
           alt={t('imageAlt')}
           sx={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
             objectPosition: 'center top',
-            display: 'block',
+            display: { xs: 'none', md: 'block' },
           }}
         />
 
