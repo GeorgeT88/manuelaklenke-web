@@ -15,6 +15,7 @@ import ContactPage from './pages/ContactPage';
 import EventsPage from './pages/EventsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import ImprintPage from './pages/ImprintPage';
+import NotFoundPage from './pages/NotFoundPage';
 import useDocumentMeta from './hooks/useDocumentMeta';
 import { useTranslation } from 'react-i18next';
 
@@ -58,6 +59,7 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="/imprint" element={<ImprintPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Box>
       <Footer />

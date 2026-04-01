@@ -15,6 +15,12 @@
     "openMenu": "Open navigation menu",
     "skipToContent": "Skip to content"
   },
+  "notFound": {
+    "title": "Page Not Found | Manuela Klenke",
+    "heading": "Page not found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home"
+  },
   "meta": {
     "title": "Manuela Klenke | Human Translator",
     "description": "Professional translation services in German, Romanian, and English.",

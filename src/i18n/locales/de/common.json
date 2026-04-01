@@ -15,6 +15,12 @@
     "openMenu": "Navigationsmenü öffnen",
     "skipToContent": "Zum Inhalt springen"
   },
+  "notFound": {
+    "title": "Seite nicht gefunden | Manuela Klenke",
+    "heading": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "backHome": "Zurück zur Startseite"
+  },
   "meta": {
     "title": "Manuela Klenke | Human Translator",
     "description": "Professionelle Übersetzungsdienstleistungen in Deutsch, Rumänisch und Englisch. Über 20 Jahre Erfahrung in juristischen, medizinischen, technischen und literarischen Übersetzungen.",

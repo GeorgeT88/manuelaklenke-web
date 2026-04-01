@@ -15,9 +15,15 @@
     "openMenu": "Deschide meniul de navigare",
     "skipToContent": "Sari la conținut"
   },
+  "notFound": {
+    "title": "Pagină negăsită | Manuela Klenke",
+    "heading": "Pagină negăsită",
+    "description": "Pagina pe care o cauți nu există sau a fost mutată.",
+    "backHome": "Înapoi la pagina principală"
+  },
   "meta": {
     "title": "Manuela Klenke | Human Translator",
-    "description": "Servicii profesionale de traducere în germană, română și engleză. Peste 20 de ani de experiență în traduceri juridice, medicale, tehnice și literare.",
+    "description": "Servicii profesionale de traducere în germană, română și engleză.",
     "pages": {
       "home": {
         "title": "Manuela Klenke | Human Translator",
