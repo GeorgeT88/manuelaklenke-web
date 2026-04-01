@@ -8,7 +8,7 @@
     "intro": "Your privacy is important to us. This page explains what data is collected when you visit this website.",
     "analytics": {
       "heading": "Analytics",
-      "body": "This website uses Vercel Analytics to collect anonymised usage statistics (pages visited, referrers, countries, device types). No cookies are set, no personal data is stored, and no consent banner is required. For more information, visit Vercel's privacy policy at vercel.com/legal/privacy-policy."
+      "body": "This website uses Vercel Analytics and Vercel Speed Insights to collect anonymised usage statistics (pages visited, referrers, countries, device types) and Core Web Vitals performance data. No cookies are set, no personal data is stored, and no consent banner is required. For more information, visit Vercel's privacy policy at vercel.com/legal/privacy-policy."
     },
     "contact": {
       "heading": "Contact for Privacy Enquiries",

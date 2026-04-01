@@ -8,7 +8,7 @@
     "intro": "Confidențialitatea dvs. este importantă pentru noi. Această pagină explică ce date sunt colectate când vizitați acest site.",
     "analytics": {
       "heading": "Analiză",
-      "body": "Acest site folosește Vercel Analytics pentru a colecta statistici anonimizate (pagini vizitate, surse de trafic, țări, tipuri de dispozitive). Nu sunt setate cookie-uri, nu sunt stocate date personale și nu este necesară o bară de consimțământ. Pentru mai multe informații, vizitați politica de confidențialitate Vercel la vercel.com/legal/privacy-policy."
+      "body": "Acest site folosește Vercel Analytics și Vercel Speed Insights pentru a colecta statistici anonimizate (pagini vizitate, surse de trafic, țări, tipuri de dispozitive) și date de performanță Core Web Vitals. Nu sunt setate cookie-uri, nu sunt stocate date personale și nu este necesară o bară de consimțământ. Pentru mai multe informații, vizitați politica de confidențialitate Vercel la vercel.com/legal/privacy-policy."
     },
     "contact": {
       "heading": "Contact pentru Întrebări privind Confidențialitatea",
