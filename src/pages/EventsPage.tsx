@@ -248,9 +248,9 @@ function EventsPage() {
                 sx={{ width: '100%', borderRadius: 2, display: 'block' }}
               />
               <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5, mt: 1, px: 0.75, py: 0.25, borderRadius: 1, backgroundColor: 'rgba(255,255,255,0.35)' }}>
-                <Typography sx={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1 }}>📷</Typography>
+                <Typography sx={{ fontSize: 14, color: 'rgba(255,255,255,0.95)', lineHeight: 1 }}>🎨</Typography>
                 <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.95)' }}>
-                  by Marius Şumlea
+                  by Ana Toma
                 </Typography>
               </Box>
             </Box>
