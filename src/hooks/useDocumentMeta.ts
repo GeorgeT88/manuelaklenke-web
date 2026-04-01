@@ -12,6 +12,13 @@ const PAGE_KEY: Record<string, string> = {
   '/contact': 'contact',
 };
 
+const BREADCRUMB_LABELS: Record<string, Record<string, string>> = {
+  '/about':     { en: 'About', ro: 'Despre mine', de: 'Über mich' },
+  '/portfolio': { en: 'Translated Books', ro: 'Cărți traduse', de: 'Übersetzte Bücher' },
+  '/events':    { en: 'Events', ro: 'Evenimente', de: 'Veranstaltungen' },
+  '/contact':   { en: 'Contact', ro: 'Contact', de: 'Kontakt' },
+};
+
 function setMeta(selector: string, attr: string, value: string) {
   let el = document.querySelector(selector);
   if (!el) {
@@ -71,6 +78,33 @@ function useDocumentMeta() {
     setLink('alternate', url, 'ro');
     setLink('alternate', url, 'de');
     setLink('alternate', url, 'x-default');
+
+    // Breadcrumb JSON-LD
+    const lang = i18n.language.startsWith('ro') ? 'ro' : i18n.language.startsWith('de') ? 'de' : 'en';
+    const breadcrumbs: { name: string; item: string }[] = [
+      { name: lang === 'ro' ? 'Acasă' : lang === 'de' ? 'Startseite' : 'Home', item: BASE_URL + '/' },
+    ];
+    if (pathname !== '/' && BREADCRUMB_LABELS[pathname]) {
+      breadcrumbs.push({ name: BREADCRUMB_LABELS[pathname][lang], item: url });
+    }
+    const breadcrumbJsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.name,
+        item: crumb.item,
+      })),
+    };
+    let breadcrumbScript = document.getElementById('breadcrumb-jsonld') as HTMLScriptElement | null;
+    if (!breadcrumbScript) {
+      breadcrumbScript = document.createElement('script');
+      breadcrumbScript.id = 'breadcrumb-jsonld';
+      breadcrumbScript.type = 'application/ld+json';
+      document.head.appendChild(breadcrumbScript);
+    }
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbJsonLd);
   }, [t, i18n.language, pathname]);
 }
 
