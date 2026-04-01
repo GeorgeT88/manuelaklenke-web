@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import dincerImg from '../photo/p14.png';
+import celaImg from '../photo/p15.png';
 import dieGuteTageImg2 from '../photo/p11.png';
 import buchmesseImg from '../photo/p10.png';
 import naturalezasImg from '../photo/p9.png';
@@ -63,6 +64,38 @@ function EventsPage() {
               sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
             >
               {t('dincerGucyeter.link')} →
+            </Link>
+          </Box>
+
+          {/* CELA Masterclass */}
+          <Box sx={{ mb: 6, border: '1px solid rgba(255,255,255,0.4)', borderRadius: 2, p: { xs: 3, md: 4 } }}>
+            <Box sx={{ width: '100%', maxWidth: 400, mb: 3 }}>
+              <Box
+                component="img"
+                src={celaImg}
+                alt={t('celaMasterclass.title')}
+                sx={{ width: '100%', borderRadius: 2, display: 'block' }}
+              />
+            </Box>
+            <Typography variant="h5" sx={{ mb: 1, color: '#ffffff', fontWeight: 600 }}>
+              {t('celaMasterclass.title')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 0.5, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic' }}>
+              {t('celaMasterclass.date')}
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.65)' }}>
+              {t('celaMasterclass.location')}
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 2.5, color: 'rgba(255,255,255,0.85)', maxWidth: 680 }}>
+              {t('celaMasterclass.description')}
+            </Typography>
+            <Link
+              href="https://www.muzeulliteraturiiiasi.ro/cela/cela-masterclass-with-manuela-klenke-germany-and-corina-oproae-spain-migration-and-double-identity-translators-and-writers-as-double-agents/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: 'secondary.light', fontWeight: 500, textDecorationColor: 'rgba(196,149,106,0.5)' }}
+            >
+              {t('celaMasterclass.link')} →
             </Link>
           </Box>
 
