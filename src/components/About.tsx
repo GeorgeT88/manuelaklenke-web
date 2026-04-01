@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import profilePhotoDesktop from '../photo/profilePhoto2.png';
-import profilePhotoMobile from '../photo/profilePhoto3.png';
+import profilePhotoDesktop from '../photo/profilePhoto2.webp';
+import profilePhotoMobile from '../photo/profilePhoto3.webp';
 
 const TEXT_BG = '#5B4A3F';
 

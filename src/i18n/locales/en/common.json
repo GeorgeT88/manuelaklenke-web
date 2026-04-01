@@ -17,6 +17,28 @@
   },
   "meta": {
     "title": "Manuela Klenke | Human Translator",
-    "description": "Professional translation services in German, Romanian, and English."
+    "description": "Professional translation services in German, Romanian, and English.",
+    "pages": {
+      "home": {
+        "title": "Manuela Klenke | Human Translator",
+        "description": "Professional translation services in German, Romanian, and English."
+      },
+      "about": {
+        "title": "About | Manuela Klenke",
+        "description": "Literary and cultural translator working between German, Romanian, and English. Discover Manuela Klenke's story and approach to translation."
+      },
+      "portfolio": {
+        "title": "Translated Books | Manuela Klenke",
+        "description": "Browse books translated by Manuela Klenke — literary works bridging Romanian and German literature."
+      },
+      "events": {
+        "title": "Events | Manuela Klenke",
+        "description": "Translation workshops, literary readings, and cultural events featuring Manuela Klenke."
+      },
+      "contact": {
+        "title": "Contact | Manuela Klenke",
+        "description": "Get in touch with Manuela Klenke for translation inquiries and collaboration opportunities."
+      }
+    }
   }
 }

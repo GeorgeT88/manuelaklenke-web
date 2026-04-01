@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import profilePhoto from '../photo/profilePhoto.png';
+import profilePhoto from '../photo/profilePhoto.webp';
 
 function Home() {
   const { t } = useTranslation('common');

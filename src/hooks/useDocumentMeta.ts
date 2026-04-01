@@ -4,6 +4,14 @@ import { useLocation } from 'react-router-dom';
 
 const BASE_URL = 'https://manuelaklenke.com';
 
+const PAGE_KEY: Record<string, string> = {
+  '/': 'home',
+  '/about': 'about',
+  '/portfolio': 'portfolio',
+  '/events': 'events',
+  '/contact': 'contact',
+};
+
 function setMeta(selector: string, attr: string, value: string) {
   let el = document.querySelector(selector);
   if (!el) {
@@ -35,8 +43,9 @@ function useDocumentMeta() {
 
   useEffect(() => {
     const url = `${BASE_URL}${pathname === '/' ? '/' : pathname}`;
-    const title = t('meta.title');
-    const description = t('meta.description');
+    const pageKey = PAGE_KEY[pathname] ?? 'home';
+    const title = t(`meta.pages.${pageKey}.title`, t('meta.title'));
+    const description = t(`meta.pages.${pageKey}.description`, t('meta.description'));
 
     // Title & lang
     document.title = title;

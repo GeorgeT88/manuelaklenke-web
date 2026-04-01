@@ -17,6 +17,28 @@
   },
   "meta": {
     "title": "Manuela Klenke | Human Translator",
-    "description": "Professionelle Übersetzungsdienstleistungen in Deutsch, Rumänisch und Englisch. Über 20 Jahre Erfahrung in juristischen, medizinischen, technischen und literarischen Übersetzungen."
+    "description": "Professionelle Übersetzungsdienstleistungen in Deutsch, Rumänisch und Englisch. Über 20 Jahre Erfahrung in juristischen, medizinischen, technischen und literarischen Übersetzungen.",
+    "pages": {
+      "home": {
+        "title": "Manuela Klenke | Human Translator",
+        "description": "Professionelle Übersetzungsdienstleistungen in Deutsch, Rumänisch und Englisch."
+      },
+      "about": {
+        "title": "Über mich | Manuela Klenke",
+        "description": "Literatur- und Kulturübersetzerin zwischen Deutsch, Rumänisch und Englisch. Erfahren Sie mehr über Manuela Klenkes Geschichte und Übersetzungsansatz."
+      },
+      "portfolio": {
+        "title": "Übersetzte Bücher | Manuela Klenke",
+        "description": "Entdecken Sie von Manuela Klenke übersetzte Bücher — literarische Werke, die rumänische und deutsche Literatur verbinden."
+      },
+      "events": {
+        "title": "Veranstaltungen | Manuela Klenke",
+        "description": "Übersetzungswerkstätten, literarische Lesungen und Kulturveranstaltungen mit Manuela Klenke."
+      },
+      "contact": {
+        "title": "Kontakt | Manuela Klenke",
+        "description": "Nehmen Sie Kontakt mit Manuela Klenke für Übersetzungsanfragen und Kooperationsmöglichkeiten auf."
+      }
+    }
   }
 }

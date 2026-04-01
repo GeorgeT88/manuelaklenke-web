@@ -17,6 +17,28 @@
   },
   "meta": {
     "title": "Manuela Klenke | Human Translator",
-    "description": "Servicii profesionale de traducere în germană, română și engleză. Peste 20 de ani de experiență în traduceri juridice, medicale, tehnice și literare."
+    "description": "Servicii profesionale de traducere în germană, română și engleză. Peste 20 de ani de experiență în traduceri juridice, medicale, tehnice și literare.",
+    "pages": {
+      "home": {
+        "title": "Manuela Klenke | Human Translator",
+        "description": "Servicii profesionale de traducere în germană, română și engleză."
+      },
+      "about": {
+        "title": "Despre mine | Manuela Klenke",
+        "description": "Traducătoare literară și culturală între germană, română și engleză. Descoperă povestea și abordarea Manuelei Klenke în traducere."
+      },
+      "portfolio": {
+        "title": "Cărți traduse | Manuela Klenke",
+        "description": "Descoperă cărțile traduse de Manuela Klenke — opere literare care fac legătura între literatura română și cea germană."
+      },
+      "events": {
+        "title": "Evenimente | Manuela Klenke",
+        "description": "Ateliere de traducere, lecturi literare și evenimente culturale cu Manuela Klenke."
+      },
+      "contact": {
+        "title": "Contact | Manuela Klenke",
+        "description": "Contactează-o pe Manuela Klenke pentru solicitări de traducere și oportunități de colaborare."
+      }
+    }
   }
 }
