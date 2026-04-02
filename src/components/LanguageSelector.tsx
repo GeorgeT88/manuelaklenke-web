@@ -5,7 +5,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LanguageIcon from '@mui/icons-material/Language';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { supportedLanguages } from '../i18n';
+import { supportedLanguages, USER_SELECTED_KEY } from '../i18n';
 
 function LanguageSelector() {
   const { i18n } = useTranslation();
@@ -21,6 +21,7 @@ function LanguageSelector() {
   };
 
   const handleLanguageChange = (langCode: string) => {
+    localStorage.setItem(USER_SELECTED_KEY, 'true');
     i18n.changeLanguage(langCode);
     handleClose();
   };

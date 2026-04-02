@@ -35,10 +35,40 @@ export const supportedLanguages = [
   { code: 'de', shortName: 'DE', name: 'Deutsch' },
 ] as const;
 
+const GEO_CACHE_KEY = 'i18nGeoCache';
+export const USER_SELECTED_KEY = 'i18nUserSelected';
+const GEO_CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+const COUNTRY_TO_LANG: Record<string, string> = { RO: 'ro', DE: 'de' };
+
+function getCachedGeoLang(): string | null {
+  try {
+    const cached = localStorage.getItem(GEO_CACHE_KEY);
+    if (!cached) return null;
+    const { lang, expires } = JSON.parse(cached) as { lang: string; expires: number };
+    if (Date.now() < expires) return lang;
+  } catch { /* ignore */ }
+  return null;
+}
+
+async function fetchAndCacheGeoLang(): Promise<void> {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json() as { country_code?: string };
+    const lang = COUNTRY_TO_LANG[data.country_code ?? ''] ?? 'en';
+    localStorage.setItem(GEO_CACHE_KEY, JSON.stringify({ lang, expires: Date.now() + GEO_CACHE_TTL }));
+    await i18n.changeLanguage(lang);
+  } catch { /* silently fail, keep current language */ }
+}
+
+// Determine initial language: cached geo result takes priority unless user manually selected
+const userSelected = localStorage.getItem(USER_SELECTED_KEY) === 'true';
+const cachedGeoLang = userSelected ? null : getCachedGeoLang();
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    lng: cachedGeoLang ?? undefined,
     resources: {
       en: {
         common: commonEn,
@@ -81,5 +111,10 @@ i18n
       escapeValue: false,
     },
   });
+
+// If no cached geo result, fetch it now (first visit or expired cache)
+if (!userSelected && !cachedGeoLang) {
+  fetchAndCacheGeoLang();
+}
 
 export default i18n;
