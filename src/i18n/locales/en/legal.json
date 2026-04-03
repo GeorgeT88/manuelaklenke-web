@@ -8,7 +8,7 @@
     "intro": "Your privacy is important to us. This page explains what data is collected when you visit this website.",
     "analytics": {
       "heading": "Analytics",
-      "body": "This website uses Vercel Analytics and Vercel Speed Insights to collect anonymised usage statistics (pages visited, referrers, countries, device types) and Core Web Vitals performance data. No cookies are set, no personal data is stored, and no consent banner is required. For more information, visit Vercel's privacy policy at vercel.com/legal/privacy-policy."
+      "body": "This website uses Vercel Analytics and Vercel Speed Insights to collect anonymised usage statistics (pages visited, referrers, countries, device types) and Core Web Vitals performance data. No cookies are set and no personal data is stored by Vercel. For more information, visit Vercel's privacy policy at vercel.com/legal/privacy-policy. This website also uses Google Analytics (GA4) to collect anonymised usage data via cookies. Data is processed by Google LLC and may be transferred to servers in the United States. You can opt out at any time via your browser settings or Google's opt-out tool at tools.google.com/dlpage/gaoptout. For more information, visit Google's privacy policy at policies.google.com/privacy."
     },
     "contact": {
       "heading": "Contact for Privacy Enquiries",

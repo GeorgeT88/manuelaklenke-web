@@ -8,7 +8,7 @@
     "intro": "Ihre Privatsphäre ist uns wichtig. Diese Seite erläutert, welche Daten beim Besuch dieser Website erhoben werden.",
     "analytics": {
       "heading": "Analyse",
-      "body": "Diese Website verwendet Vercel Analytics und Vercel Speed Insights zur Erfassung anonymisierter Nutzungsstatistiken (besuchte Seiten, Herkunftsquellen, Länder, Gerätetypen) sowie Core Web Vitals-Performancedaten. Es werden keine Cookies gesetzt, keine personenbezogenen Daten gespeichert und kein Cookie-Banner benötigt. Weitere Informationen finden Sie in der Datenschutzrichtlinie von Vercel unter vercel.com/legal/privacy-policy."
+      "body": "Diese Website verwendet Vercel Analytics und Vercel Speed Insights zur Erfassung anonymisierter Nutzungsstatistiken (besuchte Seiten, Herkunftsquellen, Länder, Gerätetypen) sowie Core Web Vitals-Performancedaten. Vercel setzt keine Cookies und speichert keine personenbezogenen Daten. Weitere Informationen finden Sie in der Datenschutzrichtlinie von Vercel unter vercel.com/legal/privacy-policy. Diese Website verwendet außerdem Google Analytics (GA4) zur Erfassung anonymisierter Nutzungsdaten mittels Cookies. Die Daten werden von Google LLC verarbeitet und können auf Server in den USA übertragen werden. Sie können der Datenerhebung jederzeit über Ihre Browsereinstellungen oder das Google-Opt-out-Tool unter tools.google.com/dlpage/gaoptout widersprechen. Weitere Informationen finden Sie in der Datenschutzrichtlinie von Google unter policies.google.com/privacy."
     },
     "contact": {
       "heading": "Kontakt für Datenschutzanfragen",
