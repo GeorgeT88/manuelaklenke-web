@@ -11,8 +11,8 @@ import p6 from '../photo/p6.webp';
 import p7 from '../photo/p7.webp';
 import p8 from '../photo/p8.webp';
 
-const PHOTOS = [p1, p2, p3, p4, p5, p6, p7, p8];
-const LINKS: (string | null)[] = ['https://edituratact.ro/carte/durs-grunbein-un-dispozitiv-pentru-captat-viitorul-poezii-alese-1988-2022/', 'https://edituratact.ro/carte/dincer-gucyeter-o-poveste-despre-germania-noastra/', 'https://mikrotext.de/book/lavinia-braniste-du-findest-mich-wenn-du-willst-roman/', 'https://www.danube-books.eu/florin-iaru-die-gruenen-brueste', 'https://parasitenpresse.wordpress.com/2024/06/28/livia-stefan-re-volver/', 'https://www.maxblecher.ro/salutare_barbarilor.php', 'https://mikrotext.de/book/lavinia-braniste-null-komma-irgendwas-roman-aus-dem-rumanischen/', 'https://mikrotext.de/book/lavinia-braniste-sonia-meldet-sich-roman/#:~:text=%E2%80%9ESonia%20meldet%20sich%20entwickelt%20eine,verdeutlichen%20Sexismus%20und%20eingefahrene%20Strukturen'];
+const PHOTOS = [p1, p3, p2, p5, p6, p8, p4, p7];
+const LINKS: (string | null)[] = ['https://edituratact.ro/carte/durs-grunbein-un-dispozitiv-pentru-captat-viitorul-poezii-alese-1988-2022/', 'https://mikrotext.de/book/lavinia-braniste-du-findest-mich-wenn-du-willst-roman/', 'https://edituratact.ro/carte/dincer-gucyeter-o-poveste-despre-germania-noastra/', 'https://parasitenpresse.wordpress.com/2024/06/28/livia-stefan-re-volver/', 'https://www.maxblecher.ro/salutare_barbarilor.php', 'https://mikrotext.de/book/lavinia-braniste-sonia-meldet-sich-roman/#:~:text=%E2%80%9ESonia%20meldet%20sich%20entwickelt%20eine,verdeutlichen%20Sexismus%20und%20eingefahrene%20Strukturen', 'https://www.danube-books.eu/florin-iaru-die-gruenen-brueste', 'https://mikrotext.de/book/lavinia-braniste-null-komma-irgendwas-roman-aus-dem-rumanischen/'];
 
 function Services() {
   const { t } = useTranslation('services');
