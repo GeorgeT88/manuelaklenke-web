@@ -3,18 +3,24 @@ import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 function PrivacyPolicyPage() {
   const { t } = useTranslation('legal');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    if (!isMobile) {
+      document.body.style.overflow = 'hidden';
+    }
     return () => { document.body.style.overflow = ''; };
-  }, []);
+  }, [isMobile]);
 
   return (
-    <Box sx={{ height: '100vh', overflow: 'hidden', backgroundColor: 'background.default' }}>
-      <Container maxWidth="lg" sx={{ height: '100vh', display: 'flex' }}>
+    <Box sx={{ height: { xs: 'auto', md: '100vh' }, minHeight: '100vh', overflow: { xs: 'auto', md: 'hidden' }, backgroundColor: 'background.default' }}>
+      <Container maxWidth="lg" sx={{ height: { xs: 'auto', md: '100vh' }, minHeight: '100vh', display: 'flex' }}>
         <Box sx={{ flex: 1, backgroundColor: 'primary.main', px: { xs: 3, md: 6 }, py: 6 }}>
           <Typography variant="h3" component="h1" sx={{ mb: 4, color: '#ffffff', fontWeight: 700 }}>
             {t('privacy.title')}
