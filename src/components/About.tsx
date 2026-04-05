@@ -22,6 +22,7 @@ function About() {
   const [fields, setFields] = useState({ heading: '', paragraph1: '', paragraph2: '', paragraph3: '' });
   const [saving, setSaving] = useState<FieldKey | null>(null);
   const [saved, setSaved] = useState<FieldKey | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
@@ -40,12 +41,17 @@ function About() {
 
   async function saveField(field: FieldKey) {
     setSaving(field);
+    setSaveError(null);
     const lang = (i18n.language ?? 'en').split('-')[0];
     const validLang = ['en', 'de', 'ro'].includes(lang) ? lang : 'en';
-    await supabase.from('about_content').update({ [field]: fields[field] }).eq('lang', validLang);
+    const { error } = await supabase.from('about_content').update({ [field]: fields[field] }).eq('lang', validLang);
     setSaving(null);
-    setSaved(field);
-    setTimeout(() => setSaved(null), 2000);
+    if (error) {
+      setSaveError(`${field}: ${error.message}`);
+    } else {
+      setSaved(field);
+      setTimeout(() => setSaved(null), 2000);
+    }
   }
 
   const heading = dbContent?.heading ?? t('heading');
@@ -141,6 +147,11 @@ function About() {
         >
           {session ? (
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, width: '100%', py: 2 }}>
+              {saveError && (
+                <Box sx={{ color: '#ffaaaa', fontSize: '0.85rem', p: 1, border: '1px solid #ffaaaa', borderRadius: 1 }}>
+                  Save failed: {saveError}
+                </Box>
+              )}
               <EditableField fieldKey="heading" label="Heading" rows={1} />
               <EditableField fieldKey="paragraph1" label="Paragraph 1" />
               <EditableField fieldKey="paragraph2" label="Paragraph 2" />
