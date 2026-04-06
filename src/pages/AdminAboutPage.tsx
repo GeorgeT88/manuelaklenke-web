@@ -11,13 +11,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 import profilePhotoDesktop from '../photo/profilePhoto2.webp';
 import profilePhotoMobile from '../photo/profilePhoto3.webp';
 import { supabase } from '../lib/supabase';
+import { useAboutContent } from '../hooks/useAboutContent';
 
 const TEXT_BG = '#5B4A3F';
 
 type FieldKey = 'heading' | 'paragraph1' | 'paragraph2' | 'paragraph3';
 
 function AdminAboutPage() {
-  const { i18n } = useTranslation('about');
+  const { t, i18n } = useTranslation('about');
+  const dbContent = useAboutContent();
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const [fields, setFields] = useState({ heading: '', paragraph1: '', paragraph2: '', paragraph3: '' });
   const [saving, setSaving] = useState<FieldKey | null>(null);
@@ -31,13 +33,13 @@ function AdminAboutPage() {
   }, []);
 
   useEffect(() => {
-    if (!session) return;
-    const lang = (i18n.language ?? 'en').split('-')[0];
-    const validLang = ['en', 'de', 'ro'].includes(lang) ? lang : 'en';
-    supabase.from('about_content').select('*').eq('lang', validLang).single().then(({ data }) => {
-      if (data) setFields({ heading: data.heading, paragraph1: data.paragraph1, paragraph2: data.paragraph2, paragraph3: data.paragraph3 });
+    setFields({
+      heading: dbContent?.heading ?? t('heading'),
+      paragraph1: dbContent?.paragraph1 ?? t('paragraph1'),
+      paragraph2: dbContent?.paragraph2 ?? t('paragraph2'),
+      paragraph3: dbContent?.paragraph3 ?? t('paragraph3'),
     });
-  }, [session, i18n.language]);
+  }, [dbContent, t]);
 
   async function saveField(field: FieldKey) {
     setSaving(field);
