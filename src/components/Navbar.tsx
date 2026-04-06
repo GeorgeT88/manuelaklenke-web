@@ -98,13 +98,13 @@ function Navbar() {
                           to="/admin/about"
                           sx={{
                             color: '#ffffff',
-                            backgroundColor: adminActive ? '#5B4A3F' : '#8B6F5E',
+                            backgroundColor: adminActive ? '#8B6F5E' : '#C4A898',
                             textTransform: 'none',
                             fontWeight: 500,
                             borderRadius: 6,
                             px: 1.5,
                             py: 0.8,
-                            '&:hover': { backgroundColor: '#5B4A3F' },
+                            '&:hover': { backgroundColor: '#8B6F5E' },
                           }}
                         >
                           Update About Me
