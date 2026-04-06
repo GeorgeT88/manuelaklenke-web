@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
+import type { Session } from '@supabase/supabase-js';
+import { supabase } from '../lib/supabase';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
@@ -27,7 +29,14 @@ const NAV_ITEMS = [
 function Navbar() {
   const { t } = useTranslation('common');
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
   const location = useLocation();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <AppBar
@@ -81,6 +90,26 @@ function Navbar() {
                 </li>
               );
             })}
+            {session && (
+              <li>
+                <Button
+                  component={Link}
+                  to="/about"
+                  sx={{
+                    color: 'primary.contrastText',
+                    backgroundColor: 'primary.main',
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    borderRadius: 6,
+                    px: 1.5,
+                    py: 0.8,
+                    '&:hover': { backgroundColor: 'primary.dark' },
+                  }}
+                >
+                  Update About Me
+                </Button>
+              </li>
+            )}
             <li>
               <LanguageSelector />
             </li>
@@ -126,6 +155,17 @@ function Navbar() {
                     </ListItem>
                   );
                 })}
+                {session && (
+                  <ListItem disablePadding>
+                    <ListItemButton
+                      component={Link}
+                      to="/about"
+                      sx={{ color: 'secondary.main', fontWeight: 700 }}
+                    >
+                      <ListItemText primary="Update About Me" />
+                    </ListItemButton>
+                  </ListItem>
+                )}
               </List>
             </Box>
           </Drawer>
