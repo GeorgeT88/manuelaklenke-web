@@ -118,6 +118,24 @@ function Navbar() {
                 </>
               );
             })}
+            {session && (
+              <li>
+                <Button
+                  onClick={() => supabase.auth.signOut()}
+                  sx={{
+                    color: 'text.primary',
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    borderRadius: 6,
+                    px: 1.5,
+                    py: 0.8,
+                    '&:hover': { color: 'secondary.main' },
+                  }}
+                >
+                  Logout
+                </Button>
+              </li>
+            )}
             <li>
               <LanguageSelector />
             </li>
@@ -176,6 +194,13 @@ function Navbar() {
                     </>
                   );
                 })}
+                {session && (
+                  <ListItem disablePadding>
+                    <ListItemButton onClick={() => supabase.auth.signOut()}>
+                      <ListItemText primary="Logout" />
+                    </ListItemButton>
+                  </ListItem>
+                )}
               </List>
             </Box>
           </Drawer>
