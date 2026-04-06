@@ -110,7 +110,7 @@ function Navbar() {
                             },
                           }}
                         >
-                          Update About Me
+                          {t('nav.updateAbout')}
                         </Button>
                       </li>
                     );
@@ -187,7 +187,7 @@ function Navbar() {
                             to="/admin/about"
                             sx={{ color: 'secondary.main', fontWeight: 700 }}
                           >
-                            <ListItemText primary="Update About Me" />
+                            <ListItemText primary={t('nav.updateAbout')} />
                           </ListItemButton>
                         </ListItem>
                       )}
