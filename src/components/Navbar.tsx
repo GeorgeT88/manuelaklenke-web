@@ -89,26 +89,32 @@ function Navbar() {
                       {t(item.labelKey)}
                     </Button>
                   </li>
-                  {item.path === '/about' && session && (
-                    <li key="update-about">
-                      <Button
-                        component={Link}
-                        to="/admin/about"
-                        sx={{
-                          color: 'primary.contrastText',
-                          backgroundColor: 'primary.main',
-                          textTransform: 'none',
-                          fontWeight: 600,
-                          borderRadius: 6,
-                          px: 1.5,
-                          py: 0.8,
-                          '&:hover': { backgroundColor: 'primary.dark' },
-                        }}
-                      >
-                        Update About Me
-                      </Button>
-                    </li>
-                  )}
+                  {item.path === '/about' && session && (() => {
+                    const adminActive = location.pathname === '/admin/about';
+                    return (
+                      <li key="update-about">
+                        <Button
+                          component={Link}
+                          to="/admin/about"
+                          sx={{
+                            color: adminActive ? 'primary.contrastText' : 'text.primary',
+                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
+                            textTransform: 'none',
+                            fontWeight: adminActive ? 600 : 500,
+                            borderRadius: 6,
+                            px: 1.5,
+                            py: 0.8,
+                            '&:hover': {
+                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
+                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
+                            },
+                          }}
+                        >
+                          Update About Me
+                        </Button>
+                      </li>
+                    );
+                  })()}
                 </>
               );
             })}
