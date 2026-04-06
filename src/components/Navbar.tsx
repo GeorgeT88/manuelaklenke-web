@@ -93,7 +93,7 @@ function Navbar() {
                     <li key="update-about">
                       <Button
                         component={Link}
-                        to="/about"
+                        to="/admin/about"
                         sx={{
                           color: 'primary.contrastText',
                           backgroundColor: 'primary.main',
@@ -160,7 +160,7 @@ function Navbar() {
                         <ListItem key="update-about" disablePadding>
                           <ListItemButton
                             component={Link}
-                            to="/about"
+                            to="/admin/about"
                             sx={{ color: 'secondary.main', fontWeight: 700 }}
                           >
                             <ListItemText primary="Update About Me" />
