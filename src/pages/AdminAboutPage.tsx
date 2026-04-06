@@ -52,7 +52,7 @@ function AdminAboutPage() {
       setSaveError(`${field}: ${error.message}`);
     } else {
       setSaved(field);
-      setTimeout(() => setSaved(null), 2000);
+      setTimeout(() => setSaved(null), 300);
     }
   }
 
@@ -89,9 +89,9 @@ function AdminAboutPage() {
           disabled={saving === fieldKey}
           sx={{
             mt: 1,
-            backgroundColor: saved === fieldKey ? '#2e7d32' : '#ffffff',
+            backgroundColor: saved === fieldKey ? '#66bb6a' : '#ffffff',
             color: saved === fieldKey ? '#ffffff' : TEXT_BG,
-            '&:hover': { backgroundColor: saved === fieldKey ? '#1b5e20' : '#e0d6d0' },
+            '&:hover': { backgroundColor: saved === fieldKey ? '#57a05a' : '#e0d6d0' },
           }}
         >
           {saving === fieldKey ? 'Saving…' : 'Save'}
