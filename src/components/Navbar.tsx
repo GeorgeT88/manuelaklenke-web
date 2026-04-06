@@ -97,14 +97,17 @@ function Navbar() {
                           component={Link}
                           to="/admin/about"
                           sx={{
-                            color: '#ffffff',
-                            backgroundColor: adminActive ? '#8B6F5E' : '#C4A898',
+                            color: adminActive ? 'primary.contrastText' : 'text.primary',
+                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
                             textTransform: 'none',
-                            fontWeight: 500,
+                            fontWeight: adminActive ? 600 : 500,
                             borderRadius: 6,
                             px: 1.5,
                             py: 0.8,
-                            '&:hover': { backgroundColor: '#8B6F5E' },
+                            '&:hover': {
+                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
+                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
+                            },
                           }}
                         >
                           Update About Me
