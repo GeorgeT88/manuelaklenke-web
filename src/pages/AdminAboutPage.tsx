@@ -87,9 +87,14 @@ function AdminAboutPage() {
           variant="contained"
           onClick={() => saveField(fieldKey)}
           disabled={saving === fieldKey}
-          sx={{ mt: 1, backgroundColor: '#ffffff', color: TEXT_BG, '&:hover': { backgroundColor: '#e0d6d0' } }}
+          sx={{
+            mt: 1,
+            backgroundColor: saved === fieldKey ? '#2e7d32' : '#ffffff',
+            color: saved === fieldKey ? '#ffffff' : TEXT_BG,
+            '&:hover': { backgroundColor: saved === fieldKey ? '#1b5e20' : '#e0d6d0' },
+          }}
         >
-          {saving === fieldKey ? 'Saving…' : saved === fieldKey ? 'Saved!' : 'Save'}
+          {saving === fieldKey ? 'Saving…' : 'Save'}
         </Button>
       </Box>
     );
