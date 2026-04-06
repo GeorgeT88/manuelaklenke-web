@@ -33,7 +33,7 @@ function AdminPage() {
     return <Box sx={{ display: 'flex', justifyContent: 'center', mt: 8 }}><CircularProgress /></Box>;
   }
 
-  if (session) return <Navigate to="/admin/about" replace />;
+  if (session) return <Navigate to="/" replace />;
 
   return (
     <Container maxWidth="xs" sx={{ mt: 10 }}>
