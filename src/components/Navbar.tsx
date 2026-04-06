@@ -67,49 +67,51 @@ function Navbar() {
             {NAV_ITEMS.map((item) => {
               const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
               return (
-                <li key={item.path}>
-                  <Button
-                    component={Link}
-                    to={item.path}
-                    sx={{
-                      color: isActive ? 'primary.contrastText' : 'text.primary',
-                      backgroundColor: isActive ? 'primary.main' : 'transparent',
-                      textTransform: 'none',
-                      fontWeight: isActive ? 600 : 500,
-                      borderRadius: 6,
-                      px: 1.5,
-                      py: 0.8,
-                      '&:hover': {
-                        color: isActive ? 'primary.contrastText' : 'secondary.main',
-                        backgroundColor: isActive ? 'primary.dark' : 'transparent',
-                      },
-                    }}
-                  >
-                    {t(item.labelKey)}
-                  </Button>
-                </li>
+                <>
+                  <li key={item.path}>
+                    <Button
+                      component={Link}
+                      to={item.path}
+                      sx={{
+                        color: isActive ? 'primary.contrastText' : 'text.primary',
+                        backgroundColor: isActive ? 'primary.main' : 'transparent',
+                        textTransform: 'none',
+                        fontWeight: isActive ? 600 : 500,
+                        borderRadius: 6,
+                        px: 1.5,
+                        py: 0.8,
+                        '&:hover': {
+                          color: isActive ? 'primary.contrastText' : 'secondary.main',
+                          backgroundColor: isActive ? 'primary.dark' : 'transparent',
+                        },
+                      }}
+                    >
+                      {t(item.labelKey)}
+                    </Button>
+                  </li>
+                  {item.path === '/about' && session && (
+                    <li key="update-about">
+                      <Button
+                        component={Link}
+                        to="/about"
+                        sx={{
+                          color: 'primary.contrastText',
+                          backgroundColor: 'primary.main',
+                          textTransform: 'none',
+                          fontWeight: 600,
+                          borderRadius: 6,
+                          px: 1.5,
+                          py: 0.8,
+                          '&:hover': { backgroundColor: 'primary.dark' },
+                        }}
+                      >
+                        Update About Me
+                      </Button>
+                    </li>
+                  )}
+                </>
               );
             })}
-            {session && (
-              <li>
-                <Button
-                  component={Link}
-                  to="/about"
-                  sx={{
-                    color: 'primary.contrastText',
-                    backgroundColor: 'primary.main',
-                    textTransform: 'none',
-                    fontWeight: 600,
-                    borderRadius: 6,
-                    px: 1.5,
-                    py: 0.8,
-                    '&:hover': { backgroundColor: 'primary.dark' },
-                  }}
-                >
-                  Update About Me
-                </Button>
-              </li>
-            )}
             <li>
               <LanguageSelector />
             </li>
@@ -141,31 +143,33 @@ function Navbar() {
                 {NAV_ITEMS.map((item) => {
                   const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
                   return (
-                    <ListItem key={item.path} disablePadding>
-                      <ListItemButton
-                        component={Link}
-                        to={item.path}
-                        sx={{
-                          color: isActive ? 'secondary.main' : 'text.primary',
-                          fontWeight: isActive ? 700 : 400,
-                        }}
-                      >
-                        <ListItemText primary={t(item.labelKey)} />
-                      </ListItemButton>
-                    </ListItem>
+                    <>
+                      <ListItem key={item.path} disablePadding>
+                        <ListItemButton
+                          component={Link}
+                          to={item.path}
+                          sx={{
+                            color: isActive ? 'secondary.main' : 'text.primary',
+                            fontWeight: isActive ? 700 : 400,
+                          }}
+                        >
+                          <ListItemText primary={t(item.labelKey)} />
+                        </ListItemButton>
+                      </ListItem>
+                      {item.path === '/about' && session && (
+                        <ListItem key="update-about" disablePadding>
+                          <ListItemButton
+                            component={Link}
+                            to="/about"
+                            sx={{ color: 'secondary.main', fontWeight: 700 }}
+                          >
+                            <ListItemText primary="Update About Me" />
+                          </ListItemButton>
+                        </ListItem>
+                      )}
+                    </>
                   );
                 })}
-                {session && (
-                  <ListItem disablePadding>
-                    <ListItemButton
-                      component={Link}
-                      to="/about"
-                      sx={{ color: 'secondary.main', fontWeight: 700 }}
-                    >
-                      <ListItemText primary="Update About Me" />
-                    </ListItemButton>
-                  </ListItem>
-                )}
               </List>
             </Box>
           </Drawer>
