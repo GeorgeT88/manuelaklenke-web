@@ -1,21 +1,31 @@
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import p1 from '../photo/p1.webp';
-import p2 from '../photo/p2.webp';
-import p3 from '../photo/p3.webp';
-import p4 from '../photo/p4.webp';
-import p5 from '../photo/p5.webp';
-import p6 from '../photo/p6.webp';
-import p7 from '../photo/p7.webp';
-import p8 from '../photo/p8.webp';
+import { supabase } from '../lib/supabase';
 
-const PHOTOS = [p1, p3, p2, p5, p6, p8, p4, p7];
-const LINKS: (string | null)[] = ['https://edituratact.ro/carte/durs-grunbein-un-dispozitiv-pentru-captat-viitorul-poezii-alese-1988-2022/', 'https://mikrotext.de/book/lavinia-braniste-du-findest-mich-wenn-du-willst-roman/', 'https://edituratact.ro/carte/dincer-gucyeter-o-poveste-despre-germania-noastra/', 'https://parasitenpresse.wordpress.com/2024/06/28/livia-stefan-re-volver/', 'https://www.maxblecher.ro/salutare_barbarilor.php', 'https://mikrotext.de/book/lavinia-braniste-sonia-meldet-sich-roman/#:~:text=%E2%80%9ESonia%20meldet%20sich%20entwickelt%20eine,verdeutlichen%20Sexismus%20und%20eingefahrene%20Strukturen', 'https://www.danube-books.eu/florin-iaru-die-gruenen-brueste', 'https://mikrotext.de/book/lavinia-braniste-null-komma-irgendwas-roman-aus-dem-rumanischen/'];
+interface Book {
+  id: string;
+  photo_url: string;
+  link: string | null;
+  order_index: number;
+}
 
 function Services() {
   const { t } = useTranslation('services');
+  const [books, setBooks] = useState<Book[]>([]);
+
+  useEffect(() => {
+    supabase
+      .from('translated_books')
+      .select('id, photo_url, link, order_index')
+      .order('order_index')
+      .then(({ data }) => {
+        if (data) setBooks(data as Book[]);
+      });
+  }, []);
+
   return (
     <Box
       component="section"
@@ -39,13 +49,13 @@ function Services() {
             gap: 3,
           }}
         >
-          {PHOTOS.map((src, i) => {
+          {books.map((book, i) => {
             const img = (
               <Box
-                key={i}
+                key={book.id}
                 component="img"
-                src={src}
-                alt={`Portfolio photo ${i + 1}`}
+                src={book.photo_url}
+                alt={`Book cover ${i + 1}`}
                 sx={{
                   width: '100%',
                   aspectRatio: '2/3',
@@ -57,8 +67,8 @@ function Services() {
                 }}
               />
             );
-            return LINKS[i] ? (
-              <a key={i} href={LINKS[i]!} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
+            return book.link ? (
+              <a key={book.id} href={book.link} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
                 {img}
               </a>
             ) : img;

@@ -18,6 +18,7 @@ import ImprintPage from './pages/ImprintPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminPage from './pages/AdminPage';
 import AdminAboutPage from './pages/AdminAboutPage';
+import AdminBooksPage from './pages/AdminBooksPage';
 import useDocumentMeta from './hooks/useDocumentMeta';
 import { useTranslation } from 'react-i18next';
 
@@ -63,6 +64,7 @@ function AppContent() {
           <Route path="/imprint" element={<ImprintPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/admin/about" element={<AdminAboutPage />} />
+          <Route path="/admin/books" element={<AdminBooksPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Box>

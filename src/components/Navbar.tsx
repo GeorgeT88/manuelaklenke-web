@@ -115,6 +115,32 @@ function Navbar() {
                       </li>
                     );
                   })()}
+                  {item.path === '/portfolio' && session && (() => {
+                    const adminActive = location.pathname === '/admin/books';
+                    return (
+                      <li key="update-books">
+                        <Button
+                          component={Link}
+                          to="/admin/books"
+                          sx={{
+                            color: adminActive ? 'primary.contrastText' : 'text.primary',
+                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
+                            textTransform: 'none',
+                            fontWeight: adminActive ? 600 : 500,
+                            borderRadius: 6,
+                            px: 1.5,
+                            py: 0.8,
+                            '&:hover': {
+                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
+                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
+                            },
+                          }}
+                        >
+                          {t('nav.updateBooks')}
+                        </Button>
+                      </li>
+                    );
+                  })()}
                 </>
               );
             })}
@@ -188,6 +214,17 @@ function Navbar() {
                             sx={{ color: 'secondary.main', fontWeight: 700 }}
                           >
                             <ListItemText primary={t('nav.updateAbout')} />
+                          </ListItemButton>
+                        </ListItem>
+                      )}
+                      {item.path === '/portfolio' && session && (
+                        <ListItem key="update-books" disablePadding>
+                          <ListItemButton
+                            component={Link}
+                            to="/admin/books"
+                            sx={{ color: 'secondary.main', fontWeight: 700 }}
+                          >
+                            <ListItemText primary={t('nav.updateBooks')} />
                           </ListItemButton>
                         </ListItem>
                       )}
