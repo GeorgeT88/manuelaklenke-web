@@ -141,6 +141,32 @@ function Navbar() {
                       </li>
                     );
                   })()}
+                  {item.path === '/events' && session && (() => {
+                    const adminActive = location.pathname === '/admin/events';
+                    return (
+                      <li key="update-events">
+                        <Button
+                          component={Link}
+                          to="/admin/events"
+                          sx={{
+                            color: adminActive ? 'primary.contrastText' : 'text.primary',
+                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
+                            textTransform: 'none',
+                            fontWeight: adminActive ? 600 : 500,
+                            borderRadius: 6,
+                            px: 1.5,
+                            py: 0.8,
+                            '&:hover': {
+                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
+                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
+                            },
+                          }}
+                        >
+                          {t('nav.updateEvents')}
+                        </Button>
+                      </li>
+                    );
+                  })()}
                 </>
               );
             })}
@@ -225,6 +251,17 @@ function Navbar() {
                             sx={{ color: 'secondary.main', fontWeight: 700 }}
                           >
                             <ListItemText primary={t('nav.updateBooks')} />
+                          </ListItemButton>
+                        </ListItem>
+                      )}
+                      {item.path === '/events' && session && (
+                        <ListItem key="update-events" disablePadding>
+                          <ListItemButton
+                            component={Link}
+                            to="/admin/events"
+                            sx={{ color: 'secondary.main', fontWeight: 700 }}
+                          >
+                            <ListItemText primary={t('nav.updateEvents')} />
                           </ListItemButton>
                         </ListItem>
                       )}

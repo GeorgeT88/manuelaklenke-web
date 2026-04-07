@@ -6,7 +6,8 @@
     "events": "Events",
     "contact": "Contact",
     "updateAbout": "Update About Me",
-    "updateBooks": "Update Translated Books"
+    "updateBooks": "Update Translated Books",
+    "updateEvents": "Update Events"
   },
   "logo": {
     "name": "MANUELA",

@@ -19,6 +19,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import AdminPage from './pages/AdminPage';
 import AdminAboutPage from './pages/AdminAboutPage';
 import AdminBooksPage from './pages/AdminBooksPage';
+import AdminEventsPage from './pages/AdminEventsPage';
 import useDocumentMeta from './hooks/useDocumentMeta';
 import { useTranslation } from 'react-i18next';
 
@@ -65,6 +66,7 @@ function AppContent() {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/admin/about" element={<AdminAboutPage />} />
           <Route path="/admin/books" element={<AdminBooksPage />} />
+          <Route path="/admin/events" element={<AdminEventsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Box>
