@@ -337,10 +337,6 @@ function AdminEventsPage() {
               <TextField label="Order" type="number" fullWidth sx={inputSx}
                 value={formData.order_index} onChange={e => setFormData(p => ({ ...p, order_index: Number(e.target.value) }))}
                 helperText="Display order (lower = first)" />
-              <TextField label="Description" fullWidth multiline rows={5} sx={inputSx}
-                value={formData.en.description}
-                onChange={e => setLang('en', 'description', e.target.value)}
-                helperText="Event description (EN) — DE and RO can be edited in their language tabs" />
             </>
           )}
 

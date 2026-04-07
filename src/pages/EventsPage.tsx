@@ -69,17 +69,7 @@ function EventsPage() {
   }, [events]);
 
   function getContent(event: EventRow): EventLangContent {
-    const primary = event.content?.[lang];
-    const en = event.content?.en;
-    const empty = { title: '', date: '', location: '', description: '', link_text: '' };
-    if (!primary) return en ?? empty;
-    return {
-      title: primary.title || en?.title || '',
-      date: primary.date || en?.date || '',
-      location: primary.location || en?.location || '',
-      description: primary.description || en?.description || '',
-      link_text: primary.link_text || en?.link_text || '',
-    };
+    return event.content?.[lang] ?? event.content?.en ?? { title: '', date: '', location: '', description: '', link_text: '' };
   }
 
   return (
