@@ -15,15 +15,28 @@ import DialogActions from '@mui/material/DialogActions';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 import { supabase } from '../lib/supabase';
 
 const TEXT_BG = '#5B4A3F';
+const BUCKET = 'book-covers';
 
 interface Book {
   id: string;
   photo_url: string;
   link: string | null;
   order_index: number;
+}
+
+async function uploadToStorage(file: File): Promise<string> {
+  const ext = file.name.split('.').pop() ?? 'webp';
+  const fileName = `book-${Date.now()}.${ext}`;
+  const { error } = await supabase.storage
+    .from(BUCKET)
+    .upload(fileName, file, { contentType: file.type, upsert: false });
+  if (error) throw new Error(error.message);
+  const { data: { publicUrl } } = supabase.storage.from(BUCKET).getPublicUrl(fileName);
+  return publicUrl;
 }
 
 function AdminBooksPage() {
@@ -35,14 +48,20 @@ function AdminBooksPage() {
 
   // Edit dialog
   const [editBook, setEditBook] = useState<Book | null>(null);
-  const [editFields, setEditFields] = useState({ photo_url: '', link: '', order_index: 0 });
+  const [editFile, setEditFile] = useState<File | null>(null);
+  const [editPreview, setEditPreview] = useState<string>('');
+  const [editLink, setEditLink] = useState('');
+  const [editOrder, setEditOrder] = useState(0);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [editError, setEditError] = useState<string | null>(null);
 
   // Add dialog
   const [addOpen, setAddOpen] = useState(false);
-  const [addFields, setAddFields] = useState({ photo_url: '', link: '', order_index: 0 });
+  const [addFile, setAddFile] = useState<File | null>(null);
+  const [addPreview, setAddPreview] = useState<string>('');
+  const [addLink, setAddLink] = useState('');
+  const [addOrder, setAddOrder] = useState(0);
   const [adding, setAdding] = useState(false);
   const [addError, setAddError] = useState<string | null>(null);
 
@@ -81,7 +100,7 @@ function AdminBooksPage() {
     const rows: Book[] = data ?? [];
 
     // Deduplicate by photo_url — keep the first occurrence, delete the rest
-    const seen = new Map<string, string>(); // photo_url → id to keep
+    const seen = new Map<string, string>();
     const toDelete: string[] = [];
     for (const book of rows) {
       if (seen.has(book.photo_url)) {
@@ -94,40 +113,100 @@ function AdminBooksPage() {
       await supabase.from('translated_books').delete().in('id', toDelete);
     }
 
-    const unique = rows.filter(b => !toDelete.includes(b.id));
-    setBooks(unique);
-
+    setBooks(rows.filter(b => !toDelete.includes(b.id)));
     setLoading(false);
     fetchingRef.current = false;
   }
 
   function openEdit(book: Book) {
     setEditBook(book);
-    setEditFields({ photo_url: book.photo_url, link: book.link ?? '', order_index: book.order_index });
+    setEditFile(null);
+    setEditPreview(book.photo_url);
+    setEditLink(book.link ?? '');
+    setEditOrder(book.order_index);
     setEditError(null);
     setSaved(false);
+  }
+
+  function handleEditFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (editPreview.startsWith('blob:')) URL.revokeObjectURL(editPreview);
+    setEditFile(file);
+    setEditPreview(URL.createObjectURL(file));
+  }
+
+  function handleAddFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (addPreview.startsWith('blob:')) URL.revokeObjectURL(addPreview);
+    setAddFile(file);
+    setAddPreview(URL.createObjectURL(file));
   }
 
   async function saveEdit() {
     if (!editBook) return;
     setSaving(true);
     setEditError(null);
+
+    let photoUrl = editBook.photo_url;
+    if (editFile) {
+      try {
+        photoUrl = await uploadToStorage(editFile);
+      } catch (err: unknown) {
+        setEditError(err instanceof Error ? err.message : 'Upload failed');
+        setSaving(false);
+        return;
+      }
+    }
+
     const { error } = await supabase
       .from('translated_books')
-      .update({
-        photo_url: editFields.photo_url.trim(),
-        link: editFields.link.trim() || null,
-        order_index: editFields.order_index,
-      })
+      .update({ photo_url: photoUrl, link: editLink.trim() || null, order_index: editOrder })
       .eq('id', editBook.id);
+
     setSaving(false);
     if (error) { setEditError(error.message); return; }
     setSaved(true);
     setTimeout(() => {
       setSaved(false);
       setEditBook(null);
+      fetchingRef.current = false;
       fetchBooks();
     }, 300);
+  }
+
+  async function addBook() {
+    if (!addFile) { setAddError('Please select an image file.'); return; }
+    setAdding(true);
+    setAddError(null);
+
+    let photoUrl: string;
+    try {
+      photoUrl = await uploadToStorage(addFile);
+    } catch (err: unknown) {
+      setAddError(err instanceof Error ? err.message : 'Upload failed');
+      setAdding(false);
+      return;
+    }
+
+    const { error } = await supabase.from('translated_books').insert({
+      photo_url: photoUrl,
+      link: addLink.trim() || null,
+      order_index: addOrder,
+    });
+
+    setAdding(false);
+    if (error) { setAddError(error.message); return; }
+
+    if (addPreview.startsWith('blob:')) URL.revokeObjectURL(addPreview);
+    setAddOpen(false);
+    setAddFile(null);
+    setAddPreview('');
+    setAddLink('');
+    setAddOrder(0);
+    fetchingRef.current = false;
+    fetchBooks();
   }
 
   async function confirmDelete() {
@@ -137,22 +216,7 @@ function AdminBooksPage() {
     setDeleting(false);
     if (error) { setError(error.message); return; }
     setDeleteId(null);
-    fetchBooks();
-  }
-
-  async function addBook() {
-    if (!addFields.photo_url.trim()) { setAddError('Photo URL is required.'); return; }
-    setAdding(true);
-    setAddError(null);
-    const { error } = await supabase.from('translated_books').insert({
-      photo_url: addFields.photo_url.trim(),
-      link: addFields.link.trim() || null,
-      order_index: addFields.order_index,
-    });
-    setAdding(false);
-    if (error) { setAddError(error.message); return; }
-    setAddOpen(false);
-    setAddFields({ photo_url: '', link: '', order_index: 0 });
+    fetchingRef.current = false;
     fetchBooks();
   }
 
@@ -177,7 +241,10 @@ function AdminBooksPage() {
             onClick={() => {
               setAddOpen(true);
               setAddError(null);
-              setAddFields({ photo_url: '', link: '', order_index: books.length });
+              setAddFile(null);
+              setAddPreview('');
+              setAddLink('');
+              setAddOrder(books.length);
             }}
             sx={{ backgroundColor: TEXT_BG, '&:hover': { backgroundColor: '#4a3830' } }}
           >
@@ -194,13 +261,7 @@ function AdminBooksPage() {
         {loading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 8 }}><CircularProgress /></Box>
         ) : (
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)' },
-              gap: 3,
-            }}
-          >
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)' }, gap: 3 }}>
             {books.map((book) => (
               <Box key={book.id}>
                 <Box
@@ -208,40 +269,15 @@ function AdminBooksPage() {
                   src={book.photo_url}
                   alt="Book cover"
                   onError={(e) => { (e.currentTarget as HTMLImageElement).style.background = '#e0d6d0'; }}
-                  sx={{
-                    width: '100%',
-                    aspectRatio: '2/3',
-                    display: 'block',
-                    objectFit: 'cover',
-                    border: '4px solid #5C3D2E',
-                    backgroundColor: '#e0d6d0',
-                  }}
+                  sx={{ width: '100%', aspectRatio: '2/3', display: 'block', objectFit: 'cover', border: '4px solid #5C3D2E', backgroundColor: '#e0d6d0' }}
                 />
                 <Box sx={{ display: 'flex', gap: 1, mt: 1, justifyContent: 'center' }}>
-                  <IconButton
-                    size="small"
-                    onClick={() => openEdit(book)}
-                    sx={{
-                      backgroundColor: TEXT_BG,
-                      color: '#fff',
-                      borderRadius: 1,
-                      px: 1.5,
-                      '&:hover': { backgroundColor: '#4a3830' },
-                    }}
-                  >
+                  <IconButton size="small" onClick={() => openEdit(book)}
+                    sx={{ backgroundColor: TEXT_BG, color: '#fff', borderRadius: 1, px: 1.5, '&:hover': { backgroundColor: '#4a3830' } }}>
                     <EditIcon fontSize="small" />
                   </IconButton>
-                  <IconButton
-                    size="small"
-                    onClick={() => setDeleteId(book.id)}
-                    sx={{
-                      backgroundColor: '#c62828',
-                      color: '#fff',
-                      borderRadius: 1,
-                      px: 1.5,
-                      '&:hover': { backgroundColor: '#a31515' },
-                    }}
-                  >
+                  <IconButton size="small" onClick={() => setDeleteId(book.id)}
+                    sx={{ backgroundColor: '#c62828', color: '#fff', borderRadius: 1, px: 1.5, '&:hover': { backgroundColor: '#a31515' } }}>
                     <DeleteIcon fontSize="small" />
                   </IconButton>
                 </Box>
@@ -260,49 +296,30 @@ function AdminBooksPage() {
               {editError}
             </Box>
           )}
-          {editFields.photo_url && (
+          {/* Current / new cover preview */}
+          {editPreview && (
             <Box sx={{ textAlign: 'center' }}>
-              <Box
-                component="img"
-                src={editFields.photo_url}
-                alt="Preview"
-                sx={{ maxHeight: 160, objectFit: 'contain', border: `2px solid ${TEXT_BG}` }}
-              />
+              <Box component="img" src={editPreview} alt="Preview"
+                sx={{ maxHeight: 180, objectFit: 'contain', border: `2px solid ${TEXT_BG}` }} />
             </Box>
           )}
-          <TextField
-            label="Photo URL"
-            fullWidth
-            value={editFields.photo_url}
-            onChange={e => setEditFields(p => ({ ...p, photo_url: e.target.value }))}
-            helperText="Public URL to the book cover image"
-          />
-          <TextField
-            label="Link (optional)"
-            fullWidth
-            value={editFields.link}
-            onChange={e => setEditFields(p => ({ ...p, link: e.target.value }))}
-            helperText="URL to the book page (publisher, bookshop, etc.)"
-          />
-          <TextField
-            label="Order"
-            type="number"
-            value={editFields.order_index}
-            onChange={e => setEditFields(p => ({ ...p, order_index: Number(e.target.value) }))}
-            helperText="Display order (lower numbers appear first)"
-          />
+          {/* Replace image */}
+          <Button component="label" variant="outlined" startIcon={<UploadFileIcon />}
+            sx={{ borderColor: TEXT_BG, color: TEXT_BG, '&:hover': { borderColor: '#4a3830', backgroundColor: '#f5f0ec' } }}>
+            {editFile ? editFile.name : 'Replace image…'}
+            <input type="file" accept="image/*" hidden onChange={handleEditFile} />
+          </Button>
+          <TextField label="Link (optional)" fullWidth value={editLink}
+            onChange={e => setEditLink(e.target.value)}
+            helperText="URL to the book page (publisher, bookshop, etc.)" />
+          <TextField label="Order" type="number" value={editOrder}
+            onChange={e => setEditOrder(Number(e.target.value))}
+            helperText="Display order (lower numbers appear first)" />
         </DialogContent>
         <DialogActions sx={{ px: 3, pb: 2 }}>
           <Button onClick={() => setEditBook(null)}>Cancel</Button>
-          <Button
-            variant="contained"
-            onClick={saveEdit}
-            disabled={saving}
-            sx={{
-              backgroundColor: saved ? '#66bb6a' : TEXT_BG,
-              '&:hover': { backgroundColor: saved ? '#57a05a' : '#4a3830' },
-            }}
-          >
+          <Button variant="contained" onClick={saveEdit} disabled={saving}
+            sx={{ backgroundColor: saved ? '#66bb6a' : TEXT_BG, '&:hover': { backgroundColor: saved ? '#57a05a' : '#4a3830' } }}>
             {saving ? 'Saving…' : 'Save'}
           </Button>
         </DialogActions>
@@ -317,47 +334,31 @@ function AdminBooksPage() {
               {addError}
             </Box>
           )}
-          {addFields.photo_url && (
+          {/* Image preview */}
+          {addPreview && (
             <Box sx={{ textAlign: 'center' }}>
-              <Box
-                component="img"
-                src={addFields.photo_url}
-                alt="Preview"
-                sx={{ maxHeight: 160, objectFit: 'contain', border: `2px solid ${TEXT_BG}` }}
-              />
+              <Box component="img" src={addPreview} alt="Preview"
+                sx={{ maxHeight: 180, objectFit: 'contain', border: `2px solid ${TEXT_BG}` }} />
             </Box>
           )}
-          <TextField
-            label="Photo URL"
-            fullWidth
-            value={addFields.photo_url}
-            onChange={e => setAddFields(p => ({ ...p, photo_url: e.target.value }))}
-            helperText="Public URL to the book cover image"
-          />
-          <TextField
-            label="Link (optional)"
-            fullWidth
-            value={addFields.link}
-            onChange={e => setAddFields(p => ({ ...p, link: e.target.value }))}
-            helperText="URL to the book page (publisher, bookshop, etc.)"
-          />
-          <TextField
-            label="Order"
-            type="number"
-            value={addFields.order_index}
-            onChange={e => setAddFields(p => ({ ...p, order_index: Number(e.target.value) }))}
-            helperText="Display order (lower numbers appear first)"
-          />
+          {/* File picker */}
+          <Button component="label" variant="outlined" startIcon={<UploadFileIcon />}
+            sx={{ borderColor: TEXT_BG, color: TEXT_BG, '&:hover': { borderColor: '#4a3830', backgroundColor: '#f5f0ec' } }}>
+            {addFile ? addFile.name : 'Choose image…'}
+            <input type="file" accept="image/*" hidden onChange={handleAddFile} />
+          </Button>
+          <TextField label="Link (optional)" fullWidth value={addLink}
+            onChange={e => setAddLink(e.target.value)}
+            helperText="URL to the book page (publisher, bookshop, etc.)" />
+          <TextField label="Order" type="number" value={addOrder}
+            onChange={e => setAddOrder(Number(e.target.value))}
+            helperText="Display order (lower numbers appear first)" />
         </DialogContent>
         <DialogActions sx={{ px: 3, pb: 2 }}>
           <Button onClick={() => setAddOpen(false)}>Cancel</Button>
-          <Button
-            variant="contained"
-            onClick={addBook}
-            disabled={adding}
-            sx={{ backgroundColor: TEXT_BG, '&:hover': { backgroundColor: '#4a3830' } }}
-          >
-            {adding ? 'Adding…' : 'Add Book'}
+          <Button variant="contained" onClick={addBook} disabled={adding}
+            sx={{ backgroundColor: TEXT_BG, '&:hover': { backgroundColor: '#4a3830' } }}>
+            {adding ? 'Uploading…' : 'Add Book'}
           </Button>
         </DialogActions>
       </Dialog>
@@ -370,12 +371,7 @@ function AdminBooksPage() {
         </DialogContent>
         <DialogActions sx={{ px: 3, pb: 2 }}>
           <Button onClick={() => setDeleteId(null)}>Cancel</Button>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={confirmDelete}
-            disabled={deleting}
-          >
+          <Button variant="contained" color="error" onClick={confirmDelete} disabled={deleting}>
             {deleting ? 'Deleting…' : 'Delete'}
           </Button>
         </DialogActions>
