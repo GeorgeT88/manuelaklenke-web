@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -6,6 +7,35 @@ import profilePhoto from '../photo/profilePhoto.webp';
 
 function Home() {
   const { t } = useTranslation('common');
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [lineInset, setLineInset] = useState(0);
+
+  const calcInset = useCallback(() => {
+    const img = imgRef.current;
+    if (!img || !img.naturalWidth) return;
+    const containerRatio = img.clientWidth / img.clientHeight;
+    const naturalRatio = img.naturalWidth / img.naturalHeight;
+    if (naturalRatio < containerRatio) {
+      // photo letterboxed left/right — no top/bottom inset
+      setLineInset(0);
+    } else {
+      // photo letterboxed top/bottom
+      const renderedHeight = img.clientWidth / naturalRatio;
+      setLineInset((img.clientHeight - renderedHeight) / 2);
+    }
+  }, []);
+
+  useEffect(() => {
+    const img = imgRef.current;
+    if (!img) return;
+    if (img.complete) calcInset();
+    img.addEventListener('load', calcInset);
+    window.addEventListener('resize', calcInset);
+    return () => {
+      img.removeEventListener('load', calcInset);
+      window.removeEventListener('resize', calcInset);
+    };
+  }, [calcInset]);
 
   return (
     <Box
@@ -31,6 +61,7 @@ function Home() {
         }}
       >
         <Box
+          ref={imgRef}
           component="img"
           src={profilePhoto}
           alt={`${t('logo.name')} ${t('logo.surname')}`}
@@ -44,8 +75,8 @@ function Home() {
         />
 
         {/* Decorative brown vertical lines - before overlay */}
-        <Box sx={{ position: 'absolute', left: 0, top: 0, width: '11px', height: '100%', backgroundColor: 'primary.main' }} />
-        <Box sx={{ position: 'absolute', right: 0, top: 0, width: '11px', height: '100%', backgroundColor: 'primary.main' }} />
+        <Box sx={{ position: 'absolute', left: 0, top: `${lineInset}px`, width: '11px', height: `calc(100% - ${lineInset * 2}px)`, backgroundColor: 'primary.main' }} />
+        <Box sx={{ position: 'absolute', right: 0, top: `${lineInset}px`, width: '11px', height: `calc(100% - ${lineInset * 2}px)`, backgroundColor: 'primary.main' }} />
 
         {/* Dark overlay */}
         <Box
@@ -56,9 +87,9 @@ function Home() {
           }}
         />
 
-        {/* Decorative white vertical lines - after overlay */}
-        <Box sx={{ position: 'absolute', left: '11px', top: 0, width: { xs: '3px', md: '6px' }, height: '100%', backgroundColor: 'rgba(200,200,200,0.85)' }} />
-        <Box sx={{ position: 'absolute', right: '11px', top: 0, width: { xs: '3px', md: '6px' }, height: '100%', backgroundColor: 'rgba(200,200,200,0.85)' }} />
+        {/* Decorative gray vertical lines - after overlay */}
+        <Box sx={{ position: 'absolute', left: '11px', top: `${lineInset}px`, width: { xs: '3px', md: '6px' }, height: `calc(100% - ${lineInset * 2}px)`, backgroundColor: 'rgba(200,200,200,0.85)' }} />
+        <Box sx={{ position: 'absolute', right: '11px', top: `${lineInset}px`, width: { xs: '3px', md: '6px' }, height: `calc(100% - ${lineInset * 2}px)`, backgroundColor: 'rgba(200,200,200,0.85)' }} />
 
 {/* Name + tagline */}
         <Box
