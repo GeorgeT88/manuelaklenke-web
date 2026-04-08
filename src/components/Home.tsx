@@ -57,8 +57,8 @@ function Home() {
         />
 
         {/* Decorative white vertical lines - after overlay */}
-        <Box sx={{ position: 'absolute', left: '11px', top: 0, width: '6px', height: '100%', backgroundColor: 'rgba(200,200,200,0.85)' }} />
-        <Box sx={{ position: 'absolute', right: '11px', top: 0, width: '6px', height: '100%', backgroundColor: 'rgba(200,200,200,0.85)' }} />
+        <Box sx={{ position: 'absolute', left: '11px', top: 0, width: { xs: '3px', md: '6px' }, height: '100%', backgroundColor: 'rgba(200,200,200,0.85)' }} />
+        <Box sx={{ position: 'absolute', right: '11px', top: 0, width: { xs: '3px', md: '6px' }, height: '100%', backgroundColor: 'rgba(200,200,200,0.85)' }} />
 
 {/* Name + tagline */}
         <Box
