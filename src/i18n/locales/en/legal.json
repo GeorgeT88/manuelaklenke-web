@@ -1,7 +1,8 @@
 {
   "footer": {
     "privacy": "Privacy Policy",
-    "imprint": "Imprint"
+    "imprint": "Imprint",
+    "close": "Close footer"
   },
   "privacy": {
     "title": "Privacy Policy",

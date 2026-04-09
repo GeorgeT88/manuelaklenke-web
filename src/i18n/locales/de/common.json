@@ -7,7 +7,8 @@
     "contact": "Kontakt",
     "updateAbout": "Über mich aktualisieren",
     "updateBooks": "Übersetzte Bücher aktualisieren",
-    "updateEvents": "Veranstaltungen aktualisieren"
+    "updateEvents": "Veranstaltungen aktualisieren",
+    "logout": "Abmelden"
   },
   "logo": {
     "name": "MANUELA",

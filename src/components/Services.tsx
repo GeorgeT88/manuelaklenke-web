@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 
@@ -15,6 +16,7 @@ interface Book {
 function Services() {
   const { t } = useTranslation('services');
   const [books, setBooks] = useState<Book[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     supabase
@@ -23,6 +25,7 @@ function Services() {
       .order('order_index')
       .then(({ data }) => {
         if (data) setBooks(data as Book[]);
+        setLoading(false);
       });
   }, []);
 
@@ -49,6 +52,11 @@ function Services() {
             gap: 3,
           }}
         >
+          {loading
+            ? Array.from({ length: 6 }).map((_, i) => (
+                <Skeleton key={i} variant="rectangular" sx={{ width: '100%', aspectRatio: '2/3' }} />
+              ))
+            : null}
           {books.map((book, i) => {
             const img = (
               <Box

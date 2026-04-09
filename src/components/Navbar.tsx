@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import type { Session } from '@supabase/supabase-js';
@@ -25,6 +25,20 @@ const NAV_ITEMS = [
   { labelKey: 'nav.events', path: '/events' },
   { labelKey: 'nav.contact', path: '/contact' },
 ];
+
+const navBtnSx = (isActive: boolean) => ({
+  color: isActive ? 'primary.contrastText' : 'text.primary',
+  backgroundColor: isActive ? 'primary.main' : 'transparent',
+  textTransform: 'none',
+  fontWeight: isActive ? 600 : 500,
+  borderRadius: 6,
+  px: 1.5,
+  py: 0.8,
+  '&:hover': {
+    color: isActive ? 'primary.contrastText' : 'secondary.main',
+    backgroundColor: isActive ? 'primary.dark' : 'transparent',
+  },
+});
 
 function Navbar() {
   const { t } = useTranslation('common');
@@ -67,124 +81,43 @@ function Navbar() {
             {NAV_ITEMS.map((item) => {
               const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
               return (
-                <>
-                  <li key={item.path}>
-                    <Button
-                      component={Link}
-                      to={item.path}
-                      sx={{
-                        color: isActive ? 'primary.contrastText' : 'text.primary',
-                        backgroundColor: isActive ? 'primary.main' : 'transparent',
-                        textTransform: 'none',
-                        fontWeight: isActive ? 600 : 500,
-                        borderRadius: 6,
-                        px: 1.5,
-                        py: 0.8,
-                        '&:hover': {
-                          color: isActive ? 'primary.contrastText' : 'secondary.main',
-                          backgroundColor: isActive ? 'primary.dark' : 'transparent',
-                        },
-                      }}
-                    >
+                <Fragment key={item.path}>
+                  <li>
+                    <Button component={Link} to={item.path} sx={navBtnSx(isActive)}>
                       {t(item.labelKey)}
                     </Button>
                   </li>
-                  {item.path === '/about' && session && (() => {
-                    const adminActive = location.pathname === '/admin/about';
-                    return (
-                      <li key="update-about">
-                        <Button
-                          component={Link}
-                          to="/admin/about"
-                          sx={{
-                            color: adminActive ? 'primary.contrastText' : 'text.primary',
-                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
-                            textTransform: 'none',
-                            fontWeight: adminActive ? 600 : 500,
-                            borderRadius: 6,
-                            px: 1.5,
-                            py: 0.8,
-                            '&:hover': {
-                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
-                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
-                            },
-                          }}
-                        >
-                          {t('nav.updateAbout')}
-                        </Button>
-                      </li>
-                    );
-                  })()}
-                  {item.path === '/portfolio' && session && (() => {
-                    const adminActive = location.pathname === '/admin/books';
-                    return (
-                      <li key="update-books">
-                        <Button
-                          component={Link}
-                          to="/admin/books"
-                          sx={{
-                            color: adminActive ? 'primary.contrastText' : 'text.primary',
-                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
-                            textTransform: 'none',
-                            fontWeight: adminActive ? 600 : 500,
-                            borderRadius: 6,
-                            px: 1.5,
-                            py: 0.8,
-                            '&:hover': {
-                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
-                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
-                            },
-                          }}
-                        >
-                          {t('nav.updateBooks')}
-                        </Button>
-                      </li>
-                    );
-                  })()}
-                  {item.path === '/events' && session && (() => {
-                    const adminActive = location.pathname === '/admin/events';
-                    return (
-                      <li key="update-events">
-                        <Button
-                          component={Link}
-                          to="/admin/events"
-                          sx={{
-                            color: adminActive ? 'primary.contrastText' : 'text.primary',
-                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
-                            textTransform: 'none',
-                            fontWeight: adminActive ? 600 : 500,
-                            borderRadius: 6,
-                            px: 1.5,
-                            py: 0.8,
-                            '&:hover': {
-                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
-                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
-                            },
-                          }}
-                        >
-                          {t('nav.updateEvents')}
-                        </Button>
-                      </li>
-                    );
-                  })()}
-                </>
+                  {item.path === '/about' && session && (
+                    <li>
+                      <Button component={Link} to="/admin/about" sx={navBtnSx(location.pathname === '/admin/about')}>
+                        {t('nav.updateAbout')}
+                      </Button>
+                    </li>
+                  )}
+                  {item.path === '/portfolio' && session && (
+                    <li>
+                      <Button component={Link} to="/admin/books" sx={navBtnSx(location.pathname === '/admin/books')}>
+                        {t('nav.updateBooks')}
+                      </Button>
+                    </li>
+                  )}
+                  {item.path === '/events' && session && (
+                    <li>
+                      <Button component={Link} to="/admin/events" sx={navBtnSx(location.pathname === '/admin/events')}>
+                        {t('nav.updateEvents')}
+                      </Button>
+                    </li>
+                  )}
+                </Fragment>
               );
             })}
             {session && (
               <li>
                 <Button
                   onClick={() => supabase.auth.signOut()}
-                  sx={{
-                    color: 'text.primary',
-                    textTransform: 'none',
-                    fontWeight: 500,
-                    borderRadius: 6,
-                    px: 1.5,
-                    py: 0.8,
-                    '&:hover': { color: 'secondary.main' },
-                  }}
+                  sx={navBtnSx(false)}
                 >
-                  Logout
+                  {t('nav.logout')}
                 </Button>
               </li>
             )}
@@ -219,8 +152,8 @@ function Navbar() {
                 {NAV_ITEMS.map((item) => {
                   const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
                   return (
-                    <>
-                      <ListItem key={item.path} disablePadding>
+                    <Fragment key={item.path}>
+                      <ListItem disablePadding>
                         <ListItemButton
                           component={Link}
                           to={item.path}
@@ -233,7 +166,7 @@ function Navbar() {
                         </ListItemButton>
                       </ListItem>
                       {item.path === '/about' && session && (
-                        <ListItem key="update-about" disablePadding>
+                        <ListItem disablePadding>
                           <ListItemButton
                             component={Link}
                             to="/admin/about"
@@ -244,7 +177,7 @@ function Navbar() {
                         </ListItem>
                       )}
                       {item.path === '/portfolio' && session && (
-                        <ListItem key="update-books" disablePadding>
+                        <ListItem disablePadding>
                           <ListItemButton
                             component={Link}
                             to="/admin/books"
@@ -255,7 +188,7 @@ function Navbar() {
                         </ListItem>
                       )}
                       {item.path === '/events' && session && (
-                        <ListItem key="update-events" disablePadding>
+                        <ListItem disablePadding>
                           <ListItemButton
                             component={Link}
                             to="/admin/events"
@@ -265,13 +198,13 @@ function Navbar() {
                           </ListItemButton>
                         </ListItem>
                       )}
-                    </>
+                    </Fragment>
                   );
                 })}
                 {session && (
                   <ListItem disablePadding>
                     <ListItemButton onClick={() => supabase.auth.signOut()}>
-                      <ListItemText primary="Logout" />
+                      <ListItemText primary={t('nav.logout')} />
                     </ListItemButton>
                   </ListItem>
                 )}
