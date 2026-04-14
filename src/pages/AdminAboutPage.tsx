@@ -17,6 +17,55 @@ const TEXT_BG = '#5B4A3F';
 
 type FieldKey = 'heading' | 'paragraph1' | 'paragraph2' | 'paragraph3';
 
+const fieldSx = {
+  '& .MuiInput-root': { color: '#ffffff' },
+  '& .MuiInput-underline:before': { borderBottomColor: '#ffffff44' },
+  '& .MuiInput-underline:after': { borderBottomColor: '#ffffff' },
+};
+
+function EditableField({
+  fieldKey, label, rows = 4, value, onChange, onSave, saving, saved,
+}: {
+  fieldKey: FieldKey;
+  label: string;
+  rows?: number;
+  value: string;
+  onChange: (val: string) => void;
+  onSave: () => void;
+  saving: boolean;
+  saved: boolean;
+}) {
+  return (
+    <Box>
+      <TextField
+        variant="standard"
+        multiline
+        fullWidth
+        rows={rows}
+        label={label}
+        value={value}
+        onChange={e => onChange(e.target.value)}
+        InputLabelProps={{ style: { color: '#ffffffaa' } }}
+        sx={fieldSx}
+      />
+      <Button
+        size="small"
+        variant="contained"
+        onClick={onSave}
+        disabled={saving}
+        sx={{
+          mt: 1,
+          backgroundColor: saved ? '#66bb6a' : '#ffffff',
+          color: saved ? '#ffffff' : TEXT_BG,
+          '&:hover': { backgroundColor: saved ? '#57a05a' : '#e0d6d0' },
+        }}
+      >
+        {saving ? 'Saving…' : 'Save'}
+      </Button>
+    </Box>
+  );
+}
+
 function AdminAboutPage() {
   const { t, i18n } = useTranslation('about');
   const dbContent = useAboutContent();
@@ -39,7 +88,8 @@ function AdminAboutPage() {
       paragraph2: dbContent?.paragraph2 ?? t('paragraph2'),
       paragraph3: dbContent?.paragraph3 ?? t('paragraph3'),
     });
-  }, [dbContent, t]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dbContent]);
 
   async function saveField(field: FieldKey) {
     setSaving(field);
@@ -61,44 +111,6 @@ function AdminAboutPage() {
   }
 
   if (!session) return <Navigate to="/admin" replace />;
-
-  const fieldSx = {
-    '& .MuiInput-root': { color: '#ffffff' },
-    '& .MuiInput-underline:before': { borderBottomColor: '#ffffff44' },
-    '& .MuiInput-underline:after': { borderBottomColor: '#ffffff' },
-  };
-
-  function EditableField({ fieldKey, label, rows = 4 }: { fieldKey: FieldKey; label: string; rows?: number }) {
-    return (
-      <Box>
-        <TextField
-          variant="standard"
-          multiline
-          fullWidth
-          rows={rows}
-          label={label}
-          value={fields[fieldKey]}
-          onChange={e => setFields(prev => ({ ...prev, [fieldKey]: e.target.value }))}
-          InputLabelProps={{ style: { color: '#ffffffaa' } }}
-          sx={fieldSx}
-        />
-        <Button
-          size="small"
-          variant="contained"
-          onClick={() => saveField(fieldKey)}
-          disabled={saving === fieldKey}
-          sx={{
-            mt: 1,
-            backgroundColor: saved === fieldKey ? '#66bb6a' : '#ffffff',
-            color: saved === fieldKey ? '#ffffff' : TEXT_BG,
-            '&:hover': { backgroundColor: saved === fieldKey ? '#57a05a' : '#e0d6d0' },
-          }}
-        >
-          {saving === fieldKey ? 'Saving…' : 'Save'}
-        </Button>
-      </Box>
-    );
-  }
 
   return (
     <Box
@@ -132,10 +144,10 @@ function AdminAboutPage() {
             </Box>
           )}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <EditableField fieldKey="heading" label="Heading" rows={1} />
-            <EditableField fieldKey="paragraph1" label="Paragraph 1" />
-            <EditableField fieldKey="paragraph2" label="Paragraph 2" />
-            <EditableField fieldKey="paragraph3" label="Paragraph 3" />
+            <EditableField fieldKey="heading" label="Heading" rows={1} value={fields.heading} onChange={v => setFields(p => ({ ...p, heading: v }))} onSave={() => saveField('heading')} saving={saving === 'heading'} saved={saved === 'heading'} />
+            <EditableField fieldKey="paragraph1" label="Paragraph 1" value={fields.paragraph1} onChange={v => setFields(p => ({ ...p, paragraph1: v }))} onSave={() => saveField('paragraph1')} saving={saving === 'paragraph1'} saved={saved === 'paragraph1'} />
+            <EditableField fieldKey="paragraph2" label="Paragraph 2" value={fields.paragraph2} onChange={v => setFields(p => ({ ...p, paragraph2: v }))} onSave={() => saveField('paragraph2')} saving={saving === 'paragraph2'} saved={saved === 'paragraph2'} />
+            <EditableField fieldKey="paragraph3" label="Paragraph 3" value={fields.paragraph3} onChange={v => setFields(p => ({ ...p, paragraph3: v }))} onSave={() => saveField('paragraph3')} saving={saving === 'paragraph3'} saved={saved === 'paragraph3'} />
           </Box>
         </Box>
       </Container>
