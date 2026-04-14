@@ -18,6 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../lib/supabase';
 
 const TEXT_BG = '#5B4A3F';
@@ -72,6 +73,7 @@ async function uploadToStorage(file: File): Promise<string> {
 }
 
 function AdminEventsPage() {
+  const { t } = useTranslation('common');
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const [events, setEvents] = useState<EventRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -227,7 +229,7 @@ function AdminEventsPage() {
         {/* Header */}
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: { xs: 3, md: 5 } }}>
           <Typography variant="h4" sx={{ fontWeight: 700, color: 'primary.main' }}>
-            Update Events
+            {t('nav.updateEvents')}
           </Typography>
           <Button variant="contained" startIcon={<AddIcon />} onClick={openAdd}
             sx={{ backgroundColor: TEXT_BG, '&:hover': { backgroundColor: '#4a3830' } }}>
