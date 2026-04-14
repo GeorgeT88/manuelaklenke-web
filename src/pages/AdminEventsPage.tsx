@@ -73,7 +73,15 @@ async function uploadToStorage(file: File): Promise<string> {
 }
 
 function AdminEventsPage() {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
+  const lang = (i18n.language ?? 'en').split('-')[0] as 'en' | 'de' | 'ro';
+
+  function getContent(event: EventRow): EventLangContent {
+    const langContent = event.content?.[lang];
+    if (langContent?.title) return langContent;
+    return event.content?.en ?? { title: '', date: '', location: '', description: '', link_text: '' };
+  }
+
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const [events, setEvents] = useState<EventRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -252,7 +260,9 @@ function AdminEventsPage() {
                 No events yet. Click "Add Event" to get started.
               </Typography>
             )}
-            {events.map((event) => (
+            {events.map((event) => {
+              const c = getContent(event);
+              return (
               <Box key={event.id} sx={{
                 display: 'flex', gap: 2, alignItems: 'center', p: 2,
                 backgroundColor: '#fff', borderRadius: 2, boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
@@ -262,19 +272,18 @@ function AdminEventsPage() {
                   sx={{ width: 80, height: 90, objectFit: 'cover', borderRadius: 1, flexShrink: 0, border: `2px solid ${TEXT_BG}`, backgroundColor: '#e0d6d0' }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
                   <Typography variant="body1" sx={{ fontWeight: 600, color: TEXT_BG, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {event.content?.en?.title || '—'}
+                    {c.title || '—'}
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>
-                    {event.content?.en?.date}{event.content?.en?.location ? ` · ${event.content.en.location}` : ''}
+                    {c.date}{c.location ? ` · ${c.location}` : ''}
                   </Typography>
-
-                  {event.content?.en?.description && (
+                  {c.description && (
                     <Typography variant="body2" sx={{
                       color: 'text.secondary',
                       display: '-webkit-box', WebkitLineClamp: 2,
                       WebkitBoxOrient: 'vertical', overflow: 'hidden',
                     }}>
-                      {event.content.en.description}
+                      {c.description}
                     </Typography>
                   )}
                 </Box>
@@ -289,7 +298,8 @@ function AdminEventsPage() {
                   </IconButton>
                 </Box>
               </Box>
-            ))}
+              );
+            })}
           </Box>
         )}
       </Container>
