@@ -24,9 +24,8 @@ const fieldSx = {
 };
 
 function EditableField({
-  fieldKey, label, rows = 4, value, onChange, onSave, saving, saved,
+  label, rows = 4, value, onChange, onSave, saving, saved,
 }: {
-  fieldKey: FieldKey;
   label: string;
   rows?: number;
   value: string;
@@ -144,10 +143,10 @@ function AdminAboutPage() {
             </Box>
           )}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <EditableField fieldKey="heading" label="Heading" rows={1} value={fields.heading} onChange={v => setFields(p => ({ ...p, heading: v }))} onSave={() => saveField('heading')} saving={saving === 'heading'} saved={saved === 'heading'} />
-            <EditableField fieldKey="paragraph1" label="Paragraph 1" value={fields.paragraph1} onChange={v => setFields(p => ({ ...p, paragraph1: v }))} onSave={() => saveField('paragraph1')} saving={saving === 'paragraph1'} saved={saved === 'paragraph1'} />
-            <EditableField fieldKey="paragraph2" label="Paragraph 2" value={fields.paragraph2} onChange={v => setFields(p => ({ ...p, paragraph2: v }))} onSave={() => saveField('paragraph2')} saving={saving === 'paragraph2'} saved={saved === 'paragraph2'} />
-            <EditableField fieldKey="paragraph3" label="Paragraph 3" value={fields.paragraph3} onChange={v => setFields(p => ({ ...p, paragraph3: v }))} onSave={() => saveField('paragraph3')} saving={saving === 'paragraph3'} saved={saved === 'paragraph3'} />
+            <EditableField label="Heading" rows={1} value={fields.heading} onChange={v => setFields(p => ({ ...p, heading: v }))} onSave={() => saveField('heading')} saving={saving === 'heading'} saved={saved === 'heading'} />
+            <EditableField label="Paragraph 1" value={fields.paragraph1} onChange={v => setFields(p => ({ ...p, paragraph1: v }))} onSave={() => saveField('paragraph1')} saving={saving === 'paragraph1'} saved={saved === 'paragraph1'} />
+            <EditableField label="Paragraph 2" value={fields.paragraph2} onChange={v => setFields(p => ({ ...p, paragraph2: v }))} onSave={() => saveField('paragraph2')} saving={saving === 'paragraph2'} saved={saved === 'paragraph2'} />
+            <EditableField label="Paragraph 3" value={fields.paragraph3} onChange={v => setFields(p => ({ ...p, paragraph3: v }))} onSave={() => saveField('paragraph3')} saving={saving === 'paragraph3'} saved={saved === 'paragraph3'} />
           </Box>
         </Box>
       </Container>
