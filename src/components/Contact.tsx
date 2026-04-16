@@ -129,7 +129,7 @@ function Contact() {
           </Alert>
         )}
 
-        <Box component="form" onSubmit={handleSubmit} noValidate aria-label={t('form.ariaLabel')}>
+        <Box component="form" onSubmit={handleSubmit} noValidate aria-label={t('form.ariaLabel')} data-testid="contact-form">
           <TextField
             fullWidth
             label={t('form.name')}
