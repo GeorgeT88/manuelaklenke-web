@@ -1,0 +1,21 @@
+name: Trigger E2E Tests
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  trigger:
+    name: Trigger Playwright tests after Vercel deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait for Vercel deployment
+        run: sleep 120
+
+      - name: Dispatch E2E tests to Playwright repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.E2E_TRIGGER_TOKEN }}
+          repository: GeorgeT88/playwright
+          event-type: vercel-deploy
