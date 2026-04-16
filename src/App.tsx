@@ -1,4 +1,4 @@
-// pipeline test
+// pipeline test 2
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
