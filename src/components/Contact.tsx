@@ -117,19 +117,19 @@ function Contact() {
         </Typography>
 
         {submitStatus === 'success' && (
-          <Alert severity="success" sx={{ mb: 3 }}>
+          <Alert severity="success" sx={{ mb: 3 }} data-testid="contact-success">
             {t('status.success')}
           </Alert>
         )}
 
         {submitStatus === 'error' && (
-          <Alert severity="error" sx={{ mb: 3 }}>
+          <Alert severity="error" sx={{ mb: 3 }} data-testid="contact-error">
             {t('status.error')}{' '}
             <a href={`mailto:${FALLBACK_EMAIL}`}>{FALLBACK_EMAIL}</a>.
           </Alert>
         )}
 
-        <Box component="form" onSubmit={handleSubmit} noValidate aria-label={t('form.ariaLabel')}>
+        <Box component="form" onSubmit={handleSubmit} noValidate aria-label={t('form.ariaLabel')} data-testid="contact-form">
           <TextField
             fullWidth
             label={t('form.name')}
@@ -139,6 +139,7 @@ function Contact() {
             error={!!errors.name}
             helperText={errors.name}
             required
+            slotProps={{ htmlInput: { 'data-testid': 'contact-name' } }}
             sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)', '&.Mui-focused': { color: '#fff' } }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' }, '&.Mui-focused fieldset': { borderColor: '#fff' }, '& input:-webkit-autofill': { WebkitBoxShadow: '0 0 0 100px #5B4A3F inset', WebkitTextFillColor: '#fff' } } }}
           />
           <TextField
@@ -151,6 +152,7 @@ function Contact() {
             error={!!errors.email}
             helperText={errors.email}
             required
+            slotProps={{ htmlInput: { 'data-testid': 'contact-email' } }}
             sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)', '&.Mui-focused': { color: '#fff' } }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' }, '&.Mui-focused fieldset': { borderColor: '#fff' }, '& input:-webkit-autofill': { WebkitBoxShadow: '0 0 0 100px #5B4A3F inset', WebkitTextFillColor: '#fff' } } }}
           />
           <TextField
@@ -164,6 +166,7 @@ function Contact() {
             required
             multiline
             rows={5}
+            slotProps={{ htmlInput: { 'data-testid': 'contact-message' } }}
             sx={{ mb: 3, '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.7)', '&.Mui-focused': { color: '#fff' } }, '& .MuiOutlinedInput-root': { color: '#fff', '& fieldset': { borderColor: 'rgba(255,255,255,0.4)' }, '&:hover fieldset': { borderColor: '#fff' }, '&.Mui-focused fieldset': { borderColor: '#fff' }, '& textarea:-webkit-autofill': { WebkitBoxShadow: '0 0 0 100px #5B4A3F inset', WebkitTextFillColor: '#fff' } } }}
           />
           <Button
@@ -173,6 +176,7 @@ function Contact() {
             size="large"
             fullWidth
             disabled={isSubmitting}
+            data-testid="contact-submit"
             sx={{
               py: 1.5,
               fontSize: '1.1rem',
