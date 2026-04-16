@@ -105,7 +105,7 @@ function Contact() {
           <Box sx={{ width: '100%', maxWidth: 600 }}>
         <Typography
           variant="h2"
-          component="h2"
+          component="h1"
           sx={{
             textAlign: 'center',
             mb: 6,

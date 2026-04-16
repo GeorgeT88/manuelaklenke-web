@@ -38,6 +38,7 @@ function Services() {
       <Container maxWidth="lg">
         <Typography
           variant="h4"
+          component="h1"
           sx={{ mb: { xs: 3, md: 5 }, fontWeight: 700, color: 'primary.main' }}
         >
           {t('translatedBooks')}

@@ -66,7 +66,7 @@ function About() {
           }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pb: { xs: 8, md: 0 } }}>
-            <Typography variant="h4" sx={{ color: '#ffffff', mb: 1 }}>{heading}</Typography>
+            <Typography variant="h4" component="h1" sx={{ color: '#ffffff', mb: 1 }}>{heading}</Typography>
             <Typography variant="body1" sx={{ color: '#ffffff' }}>{paragraph1}</Typography>
             <Typography variant="body1" sx={{ color: '#ffffff' }}>{paragraph2}</Typography>
             <Typography variant="body1" sx={{ color: '#ffffff' }}>{paragraph3}</Typography>
