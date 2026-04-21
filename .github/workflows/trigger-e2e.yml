@@ -112,20 +112,7 @@ jobs:
     needs: [build]
     if: ${{ needs.build.result == 'success' }}
     steps:
-      - name: Check if Selenium repo exists
-        id: check-repo
-        env:
-          GH_TOKEN: ${{ secrets.E2E_TRIGGER_TOKEN }}
-        run: |
-          if gh api repos/GeorgeT88/manuelaklenke-selenium-e2e --jq '.id' > /dev/null 2>&1; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "Selenium repo not found, skipping."
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Wait for any in-progress Selenium runs to finish
-        if: steps.check-repo.outputs.exists == 'true'
         env:
           GH_TOKEN: ${{ secrets.E2E_TRIGGER_TOKEN }}
         run: |
@@ -144,7 +131,6 @@ jobs:
           done
 
       - name: Dispatch Selenium tests and record timestamp
-        if: steps.check-repo.outputs.exists == 'true'
         env:
           GH_TOKEN: ${{ secrets.E2E_TRIGGER_TOKEN }}
         run: |
@@ -156,7 +142,6 @@ jobs:
             -f event_type=vercel-deploy
 
       - name: Wait for Selenium run to appear
-        if: steps.check-repo.outputs.exists == 'true'
         env:
           GH_TOKEN: ${{ secrets.E2E_TRIGGER_TOKEN }}
         run: |
@@ -180,7 +165,6 @@ jobs:
           fi
 
       - name: Poll Selenium run until complete
-        if: steps.check-repo.outputs.exists == 'true'
         env:
           GH_TOKEN: ${{ secrets.E2E_TRIGGER_TOKEN }}
         run: |
