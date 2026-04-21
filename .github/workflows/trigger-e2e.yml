@@ -30,8 +30,23 @@ jobs:
     needs: [build]
     if: ${{ needs.build.result == 'success' }}
     steps:
-      - name: Wait for Vercel deployment
-        run: sleep 120
+      - name: Wait for any in-progress E2E runs to finish
+        env:
+          GH_TOKEN: ${{ secrets.E2E_TRIGGER_TOKEN }}
+        run: |
+          echo "Checking for in-progress runs on manuelaklenke-playwright-e2e..."
+          while true; do
+            IN_PROGRESS=$(gh api "repos/GeorgeT88/manuelaklenke-playwright-e2e/actions/runs?status=in_progress" \
+              --jq '.total_count')
+            QUEUED=$(gh api "repos/GeorgeT88/manuelaklenke-playwright-e2e/actions/runs?status=queued" \
+              --jq '.total_count')
+            echo "In-progress: $IN_PROGRESS | Queued: $QUEUED"
+            if [ "$IN_PROGRESS" -eq 0 ] && [ "$QUEUED" -eq 0 ]; then
+              echo "No active runs, proceeding with dispatch."
+              break
+            fi
+            sleep 15
+          done
 
       - name: Dispatch E2E tests and record timestamp
         env:
