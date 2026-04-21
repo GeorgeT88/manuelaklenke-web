@@ -30,6 +30,7 @@ function EventsPage() {
   const { t, i18n } = useTranslation('events');
   const [events, setEvents] = useState<EventRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const lang = (i18n.language ?? 'en').split('-')[0] as 'en' | 'de' | 'ro';
 
@@ -38,8 +39,9 @@ function EventsPage() {
       .from('events')
       .select('*')
       .order('order_index')
-      .then(({ data }) => {
-        if (data) setEvents(data);
+      .then(({ data, error }) => {
+        if (error) { console.error('events error:', error); setError(error.message); }
+        else if (data) setEvents(data);
         setLoading(false);
       });
   }, []);
@@ -79,6 +81,10 @@ function EventsPage() {
           <Typography variant="h2" component="h1" sx={{ mb: 6, color: '#ffffff', fontWeight: 700 }}>
             {t('heading')}
           </Typography>
+
+          {error && (
+            <Typography sx={{ color: '#ffcdd2', mb: 2 }}>Failed to load events: {error}</Typography>
+          )}
 
           {loading ? (
             <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>

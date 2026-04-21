@@ -15,13 +15,15 @@ interface Book {
 function Services() {
   const { t } = useTranslation('services');
   const [books, setBooks] = useState<Book[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     supabase
       .from('translated_books')
       .select('id, photo_url, link, order_index')
       .order('order_index')
-      .then(({ data }) => {
+      .then(({ data, error }) => {
+        if (error) { console.error('books error:', error); setError(error.message); return; }
         if (data) setBooks(data as Book[]);
       });
   }, []);
@@ -43,6 +45,9 @@ function Services() {
         >
           {t('translatedBooks')}
         </Typography>
+        {error && (
+          <Typography color="error" sx={{ mb: 2 }}>Failed to load books: {error}</Typography>
+        )}
         <Box
           sx={{
             display: 'grid',
