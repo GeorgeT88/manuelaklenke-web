@@ -66,7 +66,7 @@ jobs:
           echo "Looking for workflow run created after $DISPATCH_TIME ..."
           for i in $(seq 1 20); do
             RUN_ID=$(gh api "repos/GeorgeT88/manuelaklenke-playwright-e2e/actions/runs?event=repository_dispatch" \
-              --jq --arg t "$DISPATCH_TIME" \
+              | jq -r --arg t "$DISPATCH_TIME" \
               '[.workflow_runs[] | select(.created_at > $t)] | .[0].id // empty')
             if [ -n "$RUN_ID" ]; then
               echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
