@@ -15,6 +15,7 @@ function Footer() {
   return (
     <Box
       component="footer"
+      data-testid="footer"
       sx={{
         position: 'fixed',
         bottom: 0,

@@ -43,6 +43,7 @@ function Navbar() {
       component="nav"
       position="fixed"
       elevation={1}
+      data-testid="navbar"
       sx={{
         backgroundColor: 'background.paper',
         color: 'text.primary',

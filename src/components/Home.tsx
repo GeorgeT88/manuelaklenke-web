@@ -41,6 +41,7 @@ function Home() {
     <Box
       component="section"
       id="home"
+      data-testid="home-section"
       sx={{
         height: '100vh',
         overflow: 'hidden',

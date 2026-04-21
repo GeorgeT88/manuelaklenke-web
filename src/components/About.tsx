@@ -22,6 +22,7 @@ function About() {
     <Box
       component="section"
       id="about"
+      data-testid="about-section"
       sx={{
         minHeight: '100vh',
         overflow: { xs: 'visible', md: 'hidden' },

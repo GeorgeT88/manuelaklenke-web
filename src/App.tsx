@@ -33,6 +33,7 @@ function AppContent() {
       <Box
         component="a"
         href="#main"
+        data-testid="skip-to-content"
         sx={{
           position: 'absolute',
           left: '-9999px',
@@ -54,7 +55,7 @@ function AppContent() {
       </Box>
       <Navbar />
       <Toolbar />
-      <Box component="main" id="main">
+      <Box component="main" id="main" data-testid="main-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
