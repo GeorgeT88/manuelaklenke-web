@@ -94,24 +94,32 @@ Every push to `main` triggers the following GitHub Actions workflow:
       ↓
 🔨 Build — compiles TypeScript and Vite bundle
       ↓
-🌐 Vercel deploys automatically
+⏳ Wait for Vercel — polls until production deployment is live
       ↓
-🎭 E2E Tests triggered in GeorgeT88/playwright
+        ┌──────────────────────────────────┐
+🎭 Playwright E2E          🔬 Selenium E2E
+        └──────────────────────────────────┘
       ↓
-📊 Test report published to GitHub Pages
+📊 Test reports published to GitHub Pages
 ```
 
-**E2E Test Report:** [https://georget88.github.io/playwright/](https://georget88.github.io/playwright/)
-**QA Repository:** [https://github.com/GeorgeT88/playwright](https://github.com/GeorgeT88/playwright)
+The `wait-for-vercel` step polls the GitHub Deployments API every 15 s (up to ~10 min) and only releases the E2E jobs once the Vercel production deployment reaches `success` state. This ensures tests always run against the newly deployed code.
 
 ---
 
 ## 🧪 Testing
 
-E2E tests are maintained in a separate QA repository — [GeorgeT88/playwright](https://github.com/GeorgeT88/playwright). Tests run automatically after every Vercel deployment and cover:
+E2E tests are maintained in two separate QA repositories, both triggered automatically after every Vercel deployment:
 
-- Navigation
-- All public pages
-- Contact form validation
-- Accessibility (skip link, image alt text, h1 structure)
+| Suite | Repository | Report |
+|---|---|---|
+| Playwright | [GeorgeT88/manuelaklenke-playwright-e2e](https://github.com/GeorgeT88/manuelaklenke-playwright-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-playwright-e2e/) |
+| Selenium | [GeorgeT88/manuelaklenke-selenium-e2e](https://github.com/GeorgeT88/manuelaklenke-selenium-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-selenium-e2e/) |
+
+Both suites run 35 tests and cover:
+
+- Navigation (Navbar, Footer, all page links, 404)
+- All public pages (Home, About, Portfolio, Events, Contact)
+- Contact form fields, validation, and submit behaviour
+- Accessibility (skip-to-content link, image alt text, single h1 per page)
 - Language switcher (EN / DE / RO)
