@@ -96,9 +96,9 @@ Every push to `main` triggers the following GitHub Actions workflow:
       ↓
 ⏳ Wait for Vercel — polls until production deployment is live
       ↓
-        ┌──────────────────────────────────┐
-🎭 Playwright E2E          🔬 Selenium E2E
-        └──────────────────────────────────┘
+  ┌──────────────────────────────────────────────────────┐
+🎭 Playwright E2E   🔬 Selenium E2E   🌲 Cypress E2E
+  └──────────────────────────────────────────────────────┘
       ↓
 📊 Test reports published to GitHub Pages
 ```
@@ -115,6 +115,7 @@ E2E tests are maintained in two separate QA repositories, both triggered automat
 |---|---|---|
 | Playwright | [GeorgeT88/manuelaklenke-playwright-e2e](https://github.com/GeorgeT88/manuelaklenke-playwright-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-playwright-e2e/) |
 | Selenium | [GeorgeT88/manuelaklenke-selenium-e2e](https://github.com/GeorgeT88/manuelaklenke-selenium-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-selenium-e2e/) |
+| Cypress | [GeorgeT88/manuelaklenke-cypress-e2e](https://github.com/GeorgeT88/manuelaklenke-cypress-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-cypress-e2e/) |
 
 Both suites run 35 tests and cover:
 
