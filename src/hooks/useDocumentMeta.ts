@@ -24,7 +24,7 @@ function setMeta(selector: string, attr: string, value: string) {
   if (!el) {
     el = document.createElement('meta');
     const [attrName, attrValue] = selector.replace('meta[', '').replace(']', '').split('="');
-    el.setAttribute(attrName, attrValue.replace('"', ''));
+    el.setAttribute(attrName, attrValue.replace(/"/g, ''));
     document.head.appendChild(el);
   }
   el.setAttribute(attr, value);
