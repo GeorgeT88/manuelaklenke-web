@@ -96,11 +96,15 @@ Every push to `main` triggers the following GitHub Actions workflow:
       ↓
 ⏳ Wait for Vercel — polls until production deployment is live
       ↓
-  ┌────────────────────────────────────────────────────────────────────────┐
-🎭 Playwright E2E   🔬 Selenium E2E   🌲 Cypress E2E   🛡️ OWASP ZAP
-  └────────────────────────────────────────────────────────────────────────┘
+  ┌──────────────────────────────────────────────┐
+🎭 Playwright E2E   🔬 Selenium E2E   🌲 Cypress E2E
+  └──────────────────────────────────────────────┘
       ↓
-📊 Test reports published to GitHub Pages
+🛡️ OWASP ZAP Security Scan
+      ↓
+🔒 Snyk Dependency Security Scan
+      ↓
+📊 Reports published to GitHub Pages
 ```
 
 The `wait-for-vercel` step polls the GitHub Deployments API every 15 s (up to ~10 min) and only releases the E2E jobs once the Vercel production deployment reaches `success` state. This ensures tests always run against the newly deployed code.
@@ -117,6 +121,7 @@ E2E tests are maintained in two separate QA repositories, both triggered automat
 | Selenium | [GeorgeT88/manuelaklenke-selenium-e2e](https://github.com/GeorgeT88/manuelaklenke-selenium-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-selenium-e2e/) |
 | Cypress | [GeorgeT88/manuelaklenke-cypress-e2e](https://github.com/GeorgeT88/manuelaklenke-cypress-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-cypress-e2e/) |
 | OWASP ZAP | [GeorgeT88/manuelaklenke-owasp-zap-security](https://github.com/GeorgeT88/manuelaklenke-owasp-zap-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-owasp-zap-security/) |
+| Snyk | [GeorgeT88/manuelaklenke-snyk-security](https://github.com/GeorgeT88/manuelaklenke-snyk-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-snyk-security/) |
 
 Both suites run 35 tests and cover:
 
