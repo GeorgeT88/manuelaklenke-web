@@ -100,9 +100,11 @@ Every push to `main` triggers the following GitHub Actions workflow:
 🎭 Playwright E2E   🔬 Selenium E2E   🌲 Cypress E2E
   └──────────────────────────────────────────────┘
       ↓
-  ┌──────────────────────────┐
-🔒 Snyk          🔎 Semgrep
-  └──────────────────────────┘
+🛡️ OWASP ZAP — skipped on auto-deploy (manual/nightly only)
+      ↓
+  ┌─────────────────────────────────┐
+🔒 Snyk (SCA)     🔎 Semgrep (SAST)
+  └─────────────────────────────────┘
       ↓
 📊 Reports published to GitHub Pages
 ```
@@ -111,23 +113,32 @@ The `wait-for-vercel` step polls the GitHub Deployments API every 15 s (up to ~1
 
 ---
 
-## 🧪 Testing
+## 🧪 E2E Testing
 
-E2E tests are maintained in two separate QA repositories, both triggered automatically after every Vercel deployment:
+Three E2E suites run automatically in parallel after every Vercel deployment, each covering 35 tests:
 
 | Suite | Repository | Report |
 |---|---|---|
 | Playwright | [GeorgeT88/manuelaklenke-playwright-e2e](https://github.com/GeorgeT88/manuelaklenke-playwright-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-playwright-e2e/) |
 | Selenium | [GeorgeT88/manuelaklenke-selenium-e2e](https://github.com/GeorgeT88/manuelaklenke-selenium-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-selenium-e2e/) |
 | Cypress | [GeorgeT88/manuelaklenke-cypress-e2e](https://github.com/GeorgeT88/manuelaklenke-cypress-e2e) | [GitHub Pages](https://georget88.github.io/manuelaklenke-cypress-e2e/) |
-| OWASP ZAP | [GeorgeT88/manuelaklenke-owasp-zap-security](https://github.com/GeorgeT88/manuelaklenke-owasp-zap-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-owasp-zap-security/) |
-| Snyk | [GeorgeT88/manuelaklenke-snyk-security](https://github.com/GeorgeT88/manuelaklenke-snyk-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-snyk-security/) |
-| Semgrep | [GeorgeT88/manuelaklenke-semgrep-security](https://github.com/GeorgeT88/manuelaklenke-semgrep-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-semgrep-security/) |
 
-Both suites run 35 tests and cover:
+All three suites cover:
 
 - Navigation (Navbar, Footer, all page links, 404)
 - All public pages (Home, About, Portfolio, Events, Contact)
 - Contact form fields, validation, and submit behaviour
 - Accessibility (skip-to-content link, image alt text, single h1 per page)
 - Language switcher (EN / DE / RO)
+
+---
+
+## 🔒 Security Testing
+
+Security scans run automatically after E2E tests complete. OWASP ZAP is manual/nightly only.
+
+| Tool | Type | Repository | Report |
+|---|---|---|---|
+| OWASP ZAP | DAST | [GeorgeT88/manuelaklenke-owasp-zap-security](https://github.com/GeorgeT88/manuelaklenke-owasp-zap-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-owasp-zap-security/) |
+| Snyk | SCA | [GeorgeT88/manuelaklenke-snyk-security](https://github.com/GeorgeT88/manuelaklenke-snyk-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-snyk-security/) |
+| Semgrep | SAST | [GeorgeT88/manuelaklenke-semgrep-security](https://github.com/GeorgeT88/manuelaklenke-semgrep-security) | [GitHub Pages](https://georget88.github.io/manuelaklenke-semgrep-security/) |
