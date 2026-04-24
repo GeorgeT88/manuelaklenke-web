@@ -314,8 +314,8 @@ jobs:
   semgrep-security:
     name: Semgrep SAST Scan
     runs-on: ubuntu-latest
-    needs: [snyk-security]
-    if: ${{ always() && needs.snyk-security.result != 'cancelled' }}
+    needs: [owasp-zap-security]
+    if: ${{ always() && needs.owasp-zap-security.result != 'cancelled' }}
     steps:
       - name: Wait for any in-progress Semgrep runs to finish
         env:

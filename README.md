@@ -100,9 +100,9 @@ Every push to `main` triggers the following GitHub Actions workflow:
 🎭 Playwright E2E   🔬 Selenium E2E   🌲 Cypress E2E
   └──────────────────────────────────────────────┘
       ↓
-🔒 Snyk Dependency Security Scan
-      ↓
-🔎 Semgrep SAST Scan
+  ┌──────────────────────────┐
+🔒 Snyk          🔎 Semgrep
+  └──────────────────────────┘
       ↓
 📊 Reports published to GitHub Pages
 ```
