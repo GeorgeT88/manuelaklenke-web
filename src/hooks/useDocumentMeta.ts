@@ -23,8 +23,11 @@ function setMeta(selector: string, attr: string, value: string) {
   let el = document.querySelector(selector);
   if (!el) {
     el = document.createElement('meta');
-    const [attrName, attrValue] = selector.replace('meta[', '').replace(']', '').split('="');
-    el.setAttribute(attrName, attrValue.replace(/"/g, ''));
+    const match = selector.match(/^meta\[([^=\]]+)="([^"]*)"\]$/);
+    if (match) {
+      const [, attrName, attrValue] = match;
+      el.setAttribute(attrName, attrValue);
+    }
     document.head.appendChild(el);
   }
   el.setAttribute(attr, value);
