@@ -100,8 +100,6 @@ Every push to `main` triggers the following GitHub Actions workflow:
 🎭 Playwright E2E   🔬 Selenium E2E   🌲 Cypress E2E
   └──────────────────────────────────────────────┘
       ↓
-🛡️ OWASP ZAP Security Scan
-      ↓
 🔒 Snyk Dependency Security Scan
       ↓
 📊 Reports published to GitHub Pages
