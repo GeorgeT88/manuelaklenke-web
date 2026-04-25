@@ -1,4 +1,4 @@
-# 🌐 manuelaklenke.com
+# <img src="https://manuelaklenke.com/favicon.svg" height="32" align="center" /> manuelaklenke.com
 
 Official website for **Manuela Klenke** — Human Translator working between Romanian, German, and English. Built with React, TypeScript and Vite, deployed on Vercel.
 
