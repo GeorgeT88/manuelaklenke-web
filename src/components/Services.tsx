@@ -53,6 +53,7 @@ function Services() {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: 3,
+            minHeight: 300,
           }}
         >
           {books.map((book, i) => {

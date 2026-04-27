@@ -44,6 +44,8 @@ function About() {
             component="img"
             src={profilePhotoMobile}
             alt={imageAlt}
+            width={550}
+            height={642}
             sx={{ width: '100%', height: 'auto', maxHeight: '35vh', objectFit: 'contain', display: { xs: 'block', md: 'none' } }}
           />
           <Box
