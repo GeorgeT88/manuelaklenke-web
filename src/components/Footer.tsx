@@ -51,6 +51,7 @@ function Footer() {
       </Typography>
       <IconButton
         size="small"
+        aria-label="Close footer"
         onClick={() => setVisible(false)}
         sx={{ position: 'absolute', right: 8, color: 'text.secondary' }}
       >
