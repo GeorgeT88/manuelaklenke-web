@@ -98,7 +98,8 @@ function EventsPage() {
                   {/* Photo */}
                   <Box sx={{ width: '100%', maxWidth: 400, mb: 3 }}>
                     <Box component="img" src={event.photo_url} alt={c.title}
-                      sx={{ width: '100%', borderRadius: 2, display: 'block' }} />
+                      fetchPriority={events.indexOf(event) === 0 ? 'high' : 'auto'}
+                      sx={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', borderRadius: 2, display: 'block' }} />
                     {event.photo_credit && (
                       event.photo_credit_url ? (
                         <Link href={event.photo_credit_url} target="_blank" rel="noopener noreferrer" underline="none"
