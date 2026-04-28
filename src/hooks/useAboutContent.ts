@@ -11,8 +11,15 @@ export interface AboutContent {
 }
 
 export function useAboutContent() {
-  const { i18n } = useTranslation();
-  const [content, setContent] = useState<AboutContent | null>(null);
+  const { i18n, t } = useTranslation('about');
+
+  const [content, setContent] = useState<AboutContent>({
+    heading: t('heading'),
+    paragraph1: t('paragraph1'),
+    paragraph2: t('paragraph2'),
+    paragraph3: t('paragraph3'),
+    image_alt: t('imageAlt'),
+  });
 
   useEffect(() => {
     const lang = (i18n.language ?? 'en').split('-')[0];

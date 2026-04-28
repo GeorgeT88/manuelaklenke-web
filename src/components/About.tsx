@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -9,14 +8,10 @@ import { useAboutContent } from '../hooks/useAboutContent';
 const TEXT_BG = '#5B4A3F';
 
 function About() {
-  const { t } = useTranslation('about');
+
   const dbContent = useAboutContent();
 
-  const heading = dbContent?.heading ?? t('heading');
-  const paragraph1 = dbContent?.paragraph1 ?? t('paragraph1');
-  const paragraph2 = dbContent?.paragraph2 ?? t('paragraph2');
-  const paragraph3 = dbContent?.paragraph3 ?? t('paragraph3');
-  const imageAlt = dbContent?.image_alt ?? t('imageAlt');
+  const { heading, paragraph1, paragraph2, paragraph3, image_alt: imageAlt } = dbContent;
 
   return (
     <Box
@@ -40,20 +35,24 @@ function About() {
             backgroundColor: { xs: TEXT_BG, md: 'transparent' },
           }}
         >
-          <Box
-            component="img"
-            src={profilePhotoMobile}
-            alt={imageAlt}
-            width={550}
-            height={642}
-            sx={{ width: '100%', height: 'auto', maxHeight: '35vh', objectFit: 'contain', display: { xs: 'block', md: 'none' } }}
-          />
-          <Box
-            component="img"
-            src={profilePhotoDesktop}
-            alt={imageAlt}
-            sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: { xs: 'none', md: 'block' } }}
-          />
+          <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+            <img
+              src={profilePhotoMobile}
+              alt={imageAlt}
+              width={550}
+              height={642}
+              style={{ width: '100%', height: 'auto', maxHeight: '35vh', objectFit: 'contain', display: 'block' }}
+            />
+          </Box>
+          <Box sx={{ display: { xs: 'none', md: 'block' }, width: '100%', height: '100%' }}>
+            <img
+              src={profilePhotoDesktop}
+              alt={imageAlt}
+              width={910}
+              height={1062}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+            />
+          </Box>
         </Box>
 
         <Box
