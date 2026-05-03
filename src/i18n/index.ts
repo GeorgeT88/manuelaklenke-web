@@ -52,8 +52,12 @@ function getCachedGeoLang(): string | null {
 
 async function fetchAndCacheGeoLang(): Promise<void> {
   try {
-    const res = await fetch('https://ipapi.co/json/');
-    const data = await res.json() as { country_code?: string };
+    // Same-origin endpoint backed by a Vercel serverless function that reads
+    // the `x-vercel-ip-country` header. Avoids the CORS / rate-limit issues
+    // we used to hit calling https://ipapi.co/json/ directly from the browser.
+    const res = await fetch('/api/geo');
+    if (!res.ok) return;
+    const data = await res.json() as { country_code?: string | null };
     const lang = COUNTRY_TO_LANG[data.country_code ?? ''] ?? 'en';
     localStorage.setItem(GEO_CACHE_KEY, JSON.stringify({ lang, expires: Date.now() + GEO_CACHE_TTL }));
     await i18n.changeLanguage(lang);
