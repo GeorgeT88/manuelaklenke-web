@@ -40,6 +40,8 @@ interface EventRow {
   photo_credit_url: string | null;
   photo_credit_icon: string;
   order_index: number;
+  start_date: string | null;
+  end_date: string | null;
   content: { en: EventLangContent; de: EventLangContent; ro: EventLangContent };
 }
 
@@ -51,6 +53,8 @@ interface FormData {
   photo_credit_url: string;
   photo_credit_icon: string;
   order_index: number;
+  start_date: string;
+  end_date: string;
   en: EventLangContent;
   de: EventLangContent;
   ro: EventLangContent;
@@ -58,6 +62,7 @@ interface FormData {
 
 const EMPTY_FORM: FormData = {
   link_url: '', photo_credit: '', photo_credit_url: '', photo_credit_icon: '📷', order_index: 0,
+  start_date: '', end_date: '',
   en: { ...EMPTY_LANG }, de: { ...EMPTY_LANG }, ro: { ...EMPTY_LANG },
 };
 
@@ -144,6 +149,8 @@ function AdminEventsPage() {
       photo_credit_url: event.photo_credit_url ?? '',
       photo_credit_icon: event.photo_credit_icon ?? '📷',
       order_index: event.order_index,
+      start_date: event.start_date ?? '',
+      end_date: event.end_date ?? '',
       en: { ...EMPTY_LANG, ...event.content?.en },
       de: { ...EMPTY_LANG, ...event.content?.de },
       ro: { ...EMPTY_LANG, ...event.content?.ro },
@@ -191,6 +198,8 @@ function AdminEventsPage() {
       photo_credit_url: formData.photo_credit_url.trim() || null,
       photo_credit_icon: formData.photo_credit_icon || '📷',
       order_index: formData.order_index,
+      start_date: formData.start_date.trim() || null,
+      end_date: formData.end_date.trim() || null,
       content: { en: formData.en, de: formData.de, ro: formData.ro },
     };
 
@@ -346,6 +355,12 @@ function AdminEventsPage() {
               <TextField label="Photo credit icon" fullWidth sx={inputSx}
                 value={formData.photo_credit_icon} onChange={e => setFormData(p => ({ ...p, photo_credit_icon: e.target.value }))}
                 helperText='📷 for photo, 🎨 for illustration' />
+              <TextField label="Start date" fullWidth sx={inputSx}
+                value={formData.start_date} onChange={e => setFormData(p => ({ ...p, start_date: e.target.value }))}
+                helperText='ISO format, e.g. "2025-11-06" — used for Google structured data' />
+              <TextField label="End date (optional)" fullWidth sx={inputSx}
+                value={formData.end_date} onChange={e => setFormData(p => ({ ...p, end_date: e.target.value }))}
+                helperText='ISO format, e.g. "2025-11-08" — leave empty for single-day events' />
               <TextField label="Order" type="number" fullWidth sx={inputSx}
                 value={formData.order_index} onChange={e => setFormData(p => ({ ...p, order_index: Number(e.target.value) }))}
                 helperText="Display order (lower = first)" />

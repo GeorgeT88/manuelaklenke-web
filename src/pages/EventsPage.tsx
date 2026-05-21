@@ -23,6 +23,8 @@ interface EventRow {
   photo_credit_url: string | null;
   photo_credit_icon: string;
   order_index: number;
+  start_date: string | null;
+  end_date: string | null;
   content: { en: EventLangContent; de: EventLangContent; ro: EventLangContent };
 }
 
@@ -65,6 +67,8 @@ function EventsPage() {
         description: ev.content?.en?.description ?? '',
         url: ev.link_url ?? undefined,
         image: ev.photo_url ?? undefined,
+        startDate: ev.start_date ?? undefined,
+        endDate: ev.end_date ?? undefined,
         eventStatus: 'https://schema.org/EventScheduled',
         location: ev.content?.en?.location
           ? { '@type': 'Place', name: ev.content.en.location }
