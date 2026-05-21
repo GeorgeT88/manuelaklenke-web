@@ -64,6 +64,12 @@ function EventsPage() {
         name: ev.content?.en?.title ?? '',
         description: ev.content?.en?.description ?? '',
         url: ev.link_url ?? undefined,
+        image: ev.photo_url ?? undefined,
+        eventStatus: 'https://schema.org/EventScheduled',
+        location: ev.content?.en?.location
+          ? { '@type': 'Place', name: ev.content.en.location }
+          : undefined,
+        organizer: { '@type': 'Person', name: 'Manuela Klenke', url: 'https://manuelaklenke.com' },
         performer: { '@type': 'Person', name: 'Manuela Klenke' },
       })),
     });
