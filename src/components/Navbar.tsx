@@ -17,6 +17,9 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from './Logo';
 import LanguageSelector from './LanguageSelector';
+import AdminNavButton from './AdminNavButton';
+import AdminMobileNavButton from './AdminMobileNavButton';
+import { getAdminItemForPath } from '../config/adminNavConfig';
 
 const NAV_ITEMS = [
   { labelKey: 'nav.home', path: '/' },
@@ -67,9 +70,10 @@ function Navbar() {
           >
             {NAV_ITEMS.map((item) => {
               const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
+              const adminItem = getAdminItemForPath(item.path);
               return (
-                <>
-                  <li key={item.path}>
+                <Box key={item.path} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <li>
                     <Button
                       component={Link}
                       to={item.path}
@@ -90,85 +94,15 @@ function Navbar() {
                       {t(item.labelKey)}
                     </Button>
                   </li>
-                  {item.path === '/about' && session && (() => {
-                    const adminActive = location.pathname === '/admin/about';
-                    return (
-                      <li key="update-about">
-                        <Button
-                          component={Link}
-                          to="/admin/about"
-                          sx={{
-                            color: adminActive ? 'primary.contrastText' : 'text.primary',
-                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
-                            textTransform: 'none',
-                            fontWeight: adminActive ? 600 : 500,
-                            borderRadius: 6,
-                            px: 1.5,
-                            py: 0.8,
-                            '&:hover': {
-                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
-                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
-                            },
-                          }}
-                        >
-                          {t('nav.updateAbout')}
-                        </Button>
-                      </li>
-                    );
-                  })()}
-                  {item.path === '/portfolio' && session && (() => {
-                    const adminActive = location.pathname === '/admin/books';
-                    return (
-                      <li key="update-books">
-                        <Button
-                          component={Link}
-                          to="/admin/books"
-                          sx={{
-                            color: adminActive ? 'primary.contrastText' : 'text.primary',
-                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
-                            textTransform: 'none',
-                            fontWeight: adminActive ? 600 : 500,
-                            borderRadius: 6,
-                            px: 1.5,
-                            py: 0.8,
-                            '&:hover': {
-                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
-                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
-                            },
-                          }}
-                        >
-                          {t('nav.updateBooks')}
-                        </Button>
-                      </li>
-                    );
-                  })()}
-                  {item.path === '/events' && session && (() => {
-                    const adminActive = location.pathname === '/admin/events';
-                    return (
-                      <li key="update-events">
-                        <Button
-                          component={Link}
-                          to="/admin/events"
-                          sx={{
-                            color: adminActive ? 'primary.contrastText' : 'text.primary',
-                            backgroundColor: adminActive ? 'primary.main' : 'transparent',
-                            textTransform: 'none',
-                            fontWeight: adminActive ? 600 : 500,
-                            borderRadius: 6,
-                            px: 1.5,
-                            py: 0.8,
-                            '&:hover': {
-                              color: adminActive ? 'primary.contrastText' : 'secondary.main',
-                              backgroundColor: adminActive ? 'primary.dark' : 'transparent',
-                            },
-                          }}
-                        >
-                          {t('nav.updateEvents')}
-                        </Button>
-                      </li>
-                    );
-                  })()}
-                </>
+                  {session && adminItem && (
+                    <li>
+                      <AdminNavButton
+                        labelKey={adminItem.labelKey}
+                        adminPath={adminItem.adminPath}
+                      />
+                    </li>
+                  )}
+                </Box>
               );
             })}
             {session && (
@@ -219,9 +153,10 @@ function Navbar() {
               <List>
                 {NAV_ITEMS.map((item) => {
                   const isActive = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
+                  const adminItem = getAdminItemForPath(item.path);
                   return (
-                    <>
-                      <ListItem key={item.path} disablePadding>
+                    <Box key={item.path}>
+                      <ListItem disablePadding>
                         <ListItemButton
                           component={Link}
                           to={item.path}
@@ -233,40 +168,13 @@ function Navbar() {
                           <ListItemText primary={t(item.labelKey)} />
                         </ListItemButton>
                       </ListItem>
-                      {item.path === '/about' && session && (
-                        <ListItem key="update-about" disablePadding>
-                          <ListItemButton
-                            component={Link}
-                            to="/admin/about"
-                            sx={{ color: 'secondary.main', fontWeight: 700 }}
-                          >
-                            <ListItemText primary={t('nav.updateAbout')} />
-                          </ListItemButton>
-                        </ListItem>
+                      {session && adminItem && (
+                        <AdminMobileNavButton
+                          labelKey={adminItem.labelKey}
+                          adminPath={adminItem.adminPath}
+                        />
                       )}
-                      {item.path === '/portfolio' && session && (
-                        <ListItem key="update-books" disablePadding>
-                          <ListItemButton
-                            component={Link}
-                            to="/admin/books"
-                            sx={{ color: 'secondary.main', fontWeight: 700 }}
-                          >
-                            <ListItemText primary={t('nav.updateBooks')} />
-                          </ListItemButton>
-                        </ListItem>
-                      )}
-                      {item.path === '/events' && session && (
-                        <ListItem key="update-events" disablePadding>
-                          <ListItemButton
-                            component={Link}
-                            to="/admin/events"
-                            sx={{ color: 'secondary.main', fontWeight: 700 }}
-                          >
-                            <ListItemText primary={t('nav.updateEvents')} />
-                          </ListItemButton>
-                        </ListItem>
-                      )}
-                    </>
+                    </Box>
                   );
                 })}
                 {session && (
