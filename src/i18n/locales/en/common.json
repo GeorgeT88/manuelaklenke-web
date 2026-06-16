@@ -25,28 +25,28 @@
     "backHome": "Back to Home"
   },
   "meta": {
-    "title": "Manuela Klenke | Human Translator",
-    "description": "Professional translation services in German, Romanian, and English.",
+    "title": "Literary Translator DE · RO · EN | Manuela Klenke",
+    "description": "Literary and cultural translator working between German, Romanian and English. Discover Manuela Klenke's approach and published works.",
     "pages": {
       "home": {
-        "title": "Manuela Klenke | Human Translator",
-        "description": "Professional translation services in German, Romanian, and English."
+        "title": "Literary Translator DE · RO · EN | Manuela Klenke",
+        "description": "Literary and cultural translator working between German, Romanian and English. Discover Manuela Klenke's approach and published works."
       },
       "about": {
-        "title": "About | Manuela Klenke",
-        "description": "Literary and cultural translator working between German, Romanian, and English. Discover Manuela Klenke's story and approach to translation."
+        "title": "Literary Translator — About | Manuela Klenke",
+        "description": "Get to know Manuela Klenke, a literary translator working across German, Romanian and English, and her approach to translation."
       },
       "portfolio": {
-        "title": "Translated Books | Manuela Klenke",
-        "description": "Browse books translated by Manuela Klenke — literary works bridging Romanian and German literature."
+        "title": "Translated Books DE · RO · EN | Manuela Klenke",
+        "description": "Explore literary works translated by Manuela Klenke between German, Romanian and English, including titles from European publishers."
       },
       "events": {
-        "title": "Events | Manuela Klenke",
-        "description": "Translation workshops, literary readings, and cultural events featuring Manuela Klenke."
+        "title": "Events & Readings | Manuela Klenke",
+        "description": "Find upcoming readings, workshops and literary events featuring translator Manuela Klenke across the German and Romanian literary scene."
       },
       "contact": {
-        "title": "Contact | Manuela Klenke",
-        "description": "Get in touch with Manuela Klenke for translation inquiries and collaboration opportunities."
+        "title": "Translation Inquiries — Contact | Manuela Klenke",
+        "description": "Get in touch with literary translator Manuela Klenke for German, Romanian and English translation projects and collaborations."
       }
     }
   }
